@@ -1,0 +1,53 @@
+# Web3 bug bounty program scoring — user profile and weights
+# Used by BB-Discover automation (Otomasyon 1)
+
+user_profile:
+  hackenproof_reputation: 90
+  kyc_completed: true
+  max_deposit_usd: 100
+  min_reward_max_usd: 50000
+  prefer_smart_contract_only: true
+
+# Hard filters — any match → verdict SKIP
+hard_filters:
+  deposit_above_max: true          # deposit_amount > max_deposit_usd
+  reputation_above_user: true      # reputation_requirement > user rep
+  non_smart_contract_only: true    # no SC in scope
+  min_score_for_go: 60
+
+# Score weights (max ~130 before caps)
+weights:
+  new_or_updated_14d: 30           # published or updated within 14 days
+  reward_max_gte_50k: 25
+  no_deposit: 20
+  deposit_lte_max: 10              # deposit required but <= max_deposit_usd
+  smart_contract_in_scope: 15
+  rules_parsed_high_confidence: 10 # out-of-scope + known issues clearly parsed
+
+# new_or_updated: days since last_updated or published_at
+recency_days: 14
+
+# Platform listing URLs (BB-Discover fetches these)
+platforms:
+  immunefi:
+    list_url: https://immunefi.com/bug-bounty/
+    type: public
+  sherlock:
+    list_url: https://audits.sherlock.xyz/bug-bounties
+    type: public
+  cantina:
+    list_url: https://cantina.xyz/opportunities
+    type: public
+  hackenproof:
+    list_url: https://dashboard.hackenproof.com/user/programs?tab=bounties
+    type: login_gated
+    note: Cloud agent may mark confidence low without session
+  hackerone:
+    list_url: https://hackerone.com/opportunities/all
+    type: partial_public
+
+# Verdict rules
+verdict:
+  go_min_score: 60
+  hold_on_low_confidence: true     # rules unclear → HOLD not GO
+  skip_below_min_score: true

@@ -1,0 +1,128 @@
+# Chain → RPC, explorer, and tooling map
+# Extend using config/chains.jpeg when available
+
+chains:
+  ethereum:
+    chain_id: 1
+    aliases: [eth, mainnet]
+    rpc:
+      env_var: ALCHEMY_ETH_RPC
+      fallback_env: INFURA_ETH_RPC
+      providers: [alchemy, infura]
+    explorer:
+      name: etherscan
+      api_env: ETHERSCAN_API_KEY
+      base_url: https://etherscan.io
+    foundry_fork: true
+
+  polygon:
+    chain_id: 137
+    aliases: [matic, pol]
+    rpc:
+      env_var: ALCHEMY_POLYGON_RPC
+      providers: [alchemy, infura]
+    explorer:
+      name: polygonscan
+      api_env: POLYGONSCAN_API_KEY
+      base_url: https://polygonscan.com
+    foundry_fork: true
+
+  arbitrum:
+    chain_id: 42161
+    aliases: [arb, arbitrum-one]
+    rpc:
+      env_var: ALCHEMY_ARB_RPC
+      providers: [alchemy, infura]
+    explorer:
+      name: arbiscan
+      api_env: ARBISCAN_API_KEY
+      base_url: https://arbiscan.io
+    foundry_fork: true
+
+  optimism:
+    chain_id: 10
+    aliases: [op]
+    rpc:
+      env_var: ALCHEMY_OP_RPC
+      providers: [alchemy, infura]
+    explorer:
+      name: optimistic-etherscan
+      api_env: OPTIMISTIC_ETHERSCAN_API_KEY
+      base_url: https://optimistic.etherscan.io
+    foundry_fork: true
+
+  base:
+    chain_id: 8453
+    aliases: [base-mainnet]
+    rpc:
+      env_var: ALCHEMY_BASE_RPC
+      providers: [alchemy, infura]
+    explorer:
+      name: basescan
+      api_env: BASESCAN_API_KEY
+      base_url: https://basescan.org
+    foundry_fork: true
+
+  bsc:
+    chain_id: 56
+    aliases: [bnb, binance]
+    rpc:
+      env_var: BSC_RPC_URL
+      default: https://bsc-dataseed.binance.org
+    explorer:
+      name: bscscan
+      api_env: BSCSCAN_API_KEY
+      base_url: https://bscscan.com
+    foundry_fork: true
+
+  avalanche:
+    chain_id: 43114
+    aliases: [avax, avax-c]
+    rpc:
+      env_var: AVALANCHE_RPC_URL
+      providers: [infura, public]
+    explorer:
+      name: snowtrace
+      api_env: SNOWTRACE_API_KEY
+      base_url: https://snowtrace.io
+    foundry_fork: true
+
+  scroll:
+    chain_id: 534352
+    aliases: [scroll-mainnet]
+    rpc:
+      env_var: SCROLL_RPC_URL
+    explorer:
+      name: scrollscan
+      api_env: SCROLLSCAN_API_KEY
+      base_url: https://scrollscan.com
+    foundry_fork: true
+
+  linea:
+    chain_id: 59144
+    aliases: [linea-mainnet]
+    rpc:
+      env_var: LINEA_RPC_URL
+    explorer:
+      name: lineascan
+      api_env: LINEASCAN_API_KEY
+      base_url: https://lineascan.build
+    foundry_fork: true
+
+  zksync:
+    chain_id: 324
+    aliases: [zksync-era]
+    rpc:
+      env_var: ZKSYNC_RPC_URL
+    explorer:
+      name: zksync-era-explorer
+      base_url: https://explorer.zksync.io
+    foundry_fork: limited
+
+# Normalize platform chain strings to keys above
+chain_aliases:
+  "ethereum mainnet": ethereum
+  "eth mainnet": ethereum
+  "polygon pos": polygon
+  "arbitrum one": arbitrum
+  "op mainnet": optimism

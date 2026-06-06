@@ -1,0 +1,78 @@
+# When to activate which API/service during pre-recon and scan
+# Extend using config/services_activate.jpg when available
+
+activation_rules:
+  always:
+    - foundry          # clone, build, test, fork PoC
+    - git              # clone scope repo
+
+  when_evm_in_scope:
+    - rpc_provider     # Alchemy/Infura per config/chains.yaml
+    - block_explorer   # Etherscan-family API for verified source
+
+  when_mainnet_fork_needed:
+    - foundry_fork     # forge test --fork-url
+    - rpc_provider
+
+  when_indexed_protocol:
+    - the_graph        # if program docs mention subgraph
+    - dune             # optional analytics
+
+  when_complex_tx_debug:
+    - tenderly         # optional simulation (respect program rules)
+
+  when_prior_audit_pdf:
+    - manual_read      # never auto-submit findings from audit PDF as new
+
+services:
+  foundry:
+    install: curl -L https://foundry.paradigm.xyz | bash && foundryup
+    use_for: [build, test, fork, poc]
+    scope_rule: local fork only unless program allows mainnet testing
+
+  rpc_provider:
+    providers:
+      alchemy:
+        env_pattern: ALCHEMY_{CHAIN}_RPC
+      infura:
+        env_pattern: INFURA_{CHAIN}_RPC
+    use_for: [fork_block, eth_call, trace]
+    scope_rule: read-only; no DoS or traffic abuse
+
+  block_explorer:
+    family: etherscan_v2
+    use_for: [verified_source, proxy_implementation, recent_tx_sample]
+    scope_rule: API rate limits only
+
+  the_graph:
+    use_for: [protocol_state_indexed_events]
+    when: program mentions subgraph or The Graph endpoint
+
+  dune:
+    use_for: [tvl_flow_analytics]
+    when: optional recon only
+
+  tenderly:
+    use_for: [tx_simulation]
+    when: program allows and fork insufficient
+    scope_rule: check prohibited_actions — many programs ban third-party prod sim
+
+  slither:
+    use_for: [static_analysis_prefilter]
+    when: local clone complete; in-scope paths only
+
+# Per-phase service bundle (referenced in recon prompt)
+phases:
+  pre_recon:
+    - git
+    - block_explorer
+    - rpc_provider
+  x_ray:
+    - foundry
+    - git
+  auditor:
+    - foundry
+    - slither
+  poc:
+    - foundry_fork
+    - rpc_provider

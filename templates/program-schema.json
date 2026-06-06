@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NormalizedBugBountyProgram",
+  "type": "object",
+  "required": [
+    "program_name",
+    "platform",
+    "url",
+    "chains",
+    "reward_max",
+    "deposit_required",
+    "smart_contract_in_scope",
+    "scoring",
+    "confidence",
+    "verdict"
+  ],
+  "properties": {
+    "program_name": { "type": "string" },
+    "platform": {
+      "type": "string",
+      "enum": ["immunefi", "sherlock", "cantina", "hackenproof", "hackerone"]
+    },
+    "url": { "type": "string", "format": "uri" },
+    "scope_url": { "type": "string", "format": "uri" },
+    "repo_url": { "type": "string", "format": "uri" },
+    "last_updated": { "type": "string", "description": "ISO 8601 date" },
+    "published_at": { "type": "string", "description": "ISO 8601 date" },
+    "new_or_updated": { "type": "boolean" },
+    "chains": { "type": "array", "items": { "type": "string" } },
+    "stack": { "type": "string" },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "reward_max": { "type": "number" },
+    "reward_currency": { "type": "string", "default": "USD" },
+    "deposit_required": { "type": "boolean" },
+    "deposit_amount": { "type": "number" },
+    "kyc_required": { "type": "boolean" },
+    "reputation_requirement": { "type": "number" },
+    "smart_contract_in_scope": { "type": "boolean" },
+    "out_of_scope": { "type": "array", "items": { "type": "string" } },
+    "known_issues": { "type": "array", "items": { "type": "string" } },
+    "prohibited_actions": { "type": "array", "items": { "type": "string" } },
+    "submission_rules": { "type": "array", "items": { "type": "string" } },
+    "in_scope_contracts": { "type": "array", "items": { "type": "string" } },
+    "risk_flags": { "type": "array", "items": { "type": "string" } },
+    "scoring": { "type": "number", "minimum": 0, "maximum": 100 },
+    "selection_reason": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["high", "low"] },
+    "verdict": { "type": "string", "enum": ["GO", "HOLD", "SKIP"] },
+    "recon_prompt": { "type": "string" },
+    "services_to_activate": { "type": "array", "items": { "type": "string" } }
+  }
+}

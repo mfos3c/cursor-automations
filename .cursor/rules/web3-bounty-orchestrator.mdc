@@ -1,0 +1,37 @@
+---
+description: Web3 bug bounty orchestrator — discovery, scoring, preflight, scan pipeline
+globs:
+  - config/**
+  - templates/**
+  - data/**
+alwaysApply: false
+---
+
+# Web3 Bounty Orchestrator
+
+This repo configures two Cursor Automations:
+
+1. **BB-Discover** (cloud) — fetch, normalize, score programs; write Obsidian daily pick
+2. **BB-Scan** (local) — RAG preflight, x-ray, solidity-auditor; LEADs only
+
+## Rules
+
+- Never submit bounty reports from automations
+- Never PoC or clone repos in BB-Discover
+- Apply `config/scoring.yaml` hard filters before scoring
+- Map chains via `config/chains.yaml`; services via `config/services.yaml`
+- Out-of-scope and known issues must be parsed before verdict GO
+- Low confidence on rules → HOLD not GO
+- HackenProof rep filter: user rep = 90
+- Deposit > $100 → SKIP
+
+## Obsidian paths (Web3-Security vault)
+
+- Daily pick: `20-bounties/daily-pick-YYYY-MM-DD.md`
+- Scan output: `30-findings/{slug}-scan-YYYY-MM-DD.md`
+
+## Reference
+
+- `50-reference/bounty-preflight-checklist.md`
+- `50-reference/pashov-bounty-workflow.md`
+- `50-reference/cursor-automations-bounty-playbook.md`
