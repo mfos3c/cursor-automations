@@ -36,7 +36,7 @@
     },
     "memoryEnabled": true,
     "gitConfig": {
-      "repo": "mfosec/cursor_automations",
+      "repo": "mfos3c/cursor-automations",
       "branch": "main"
     }
   }

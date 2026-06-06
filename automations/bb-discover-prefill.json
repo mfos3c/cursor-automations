@@ -27,6 +27,10 @@
     "agentOptions": {
       "skipInstall": false
     },
-    "memoryEnabled": true
+    "memoryEnabled": true,
+    "gitConfig": {
+      "repo": "mfos3c/cursor-automations",
+      "branch": "main"
+    }
   }
 }

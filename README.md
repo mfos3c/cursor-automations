@@ -102,21 +102,29 @@ Reputation filter still applies when data is available: skip programs requiring 
 
 ## Create automations in Cursor
 
-1. Open **Automations** in Cursor (or use prefill from setup)
-2. **BB-Discover**
-   - Name: `Web3 BB Program Discovery`
-   - Trigger: Cron `0 6 * * 1-5`
-   - Runtime: **Cloud**
-   - Tools: MCP → Bright Data
-   - Instructions: copy from [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md)
-   - Repository: your GitHub `cursor_automations` repo
-3. **BB-Scan**
-   - Name: `Web3 BB Pre-Scan Pipeline`
-   - Trigger: Cron `30 6 * * 1-5`
-   - Runtime: **Local**
-   - Tools: MCP → obsidian-web3, web3-bbp-rag
-   - Instructions: copy from [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md)
-   - Repository: same orchestrator repo (optional, for config read)
+**BB-Discover** was opened in the Automations editor with prefill from `automations/bb-discover-prefill.json`.
+
+**BB-Scan** — if the second editor tab did not open, create manually from [`automations/bb-scan-prefill.json`](automations/bb-scan-prefill.json).
+
+### BB-Discover (editor checklist)
+
+- Name: `Web3 BB Program Discovery`
+- Trigger: Cron `0 6 * * 1-5`
+- Runtime: **Cloud**
+- Tools: MCP → Bright Data
+- Instructions: [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md)
+- Repository: `mfos3c/cursor-automations` on GitHub — https://github.com/mfos3c/cursor-automations
+
+**Important:** Cursor dashboard GitHub is connected as `turnikesistemleri`. To use this repo in cloud automations, click **Add Repositories** in the automation editor and grant Cursor access to `mfos3c/cursor-automations` (GitHub login as `mfos3c` may be required).
+
+### BB-Scan (editor checklist)
+
+- Name: `Web3 BB Pre-Scan Pipeline`
+- Trigger: Cron `30 6 * * 1-5`
+- Runtime: **Local**
+- Tools: MCP → obsidian-web3, web3-bbp-rag
+- Instructions: [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md)
+- Repository: optional (local path `/Users/mfosec/Desktop/cursor_automations` works)
 
 ---
 
