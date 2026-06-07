@@ -1,19 +1,26 @@
-# Obsidian Web3-Security vault is the canonical memory layer for the whole system.
-# Git repo (cursor-automations) is a transport/backup bridge for cloud agents only.
+# Obsidian Web3-Security vault — canonical memory for bounty pipeline + RAG corpus.
 
 vault_path: "/Users/mfosec/Documents/Obsidian Vaults/Web3-Security"
-vault_name: "Web3-Security"
+vault_name: "Web3 Security"
 
-# Canonical paths (Obsidian vault layout — same folders mirrored in repo for cloud)
+# Graph entry
+graph_hub: "00-index/Web3 Graph Hub.md"
+
+# Pipeline paths (also mirrored in git repo for cloud bridge)
 paths:
+  index: "00-index"
   daily_picks: "20-bounties"
   findings: "30-findings"
+  protocols: "40-protocols"
   reference: "50-reference"
-  snapshots: "data"  # JSON cache; repo-only, not mirrored to vault
+  corpus: "60-corpus"       # imported from web3-rag-mcp (421 docs)
+  snapshots: "data"        # JSON cache; repo-only
 
-# Cloud BB-Discover cannot call Obsidian MCP → writes repo → inbound sync to vault
-inbound_sync: "scripts/sync-to-obsidian.sh"   # git/repo → vault
-outbound_sync: "scripts/sync-from-obsidian.sh" # vault → repo (after local MCP writes)
+# RAG source (re-import when content/ updates)
+rag_source: "/Users/mfosec/web3-rag-mcp"
+import_script: "scripts/import-rag-corpus.py"
 
-# Morning routine before BB-Scan (09:25 TR): merge cloud PR, then inbound sync
+# Cloud BB-Discover → git → vault inbound
+inbound_sync: "scripts/sync-to-obsidian.sh"
+outbound_sync: "scripts/sync-from-obsidian.sh"
 pull_and_sync: "scripts/pull-and-sync.sh"

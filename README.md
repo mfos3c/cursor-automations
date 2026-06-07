@@ -48,6 +48,20 @@ BB-Scan Tools: **obsidian-web3 + web3-bbp-rag** (not git-only).
 
 ---
 
+## Re-import RAG corpus (421 docs from web3-rag-mcp)
+
+When `/Users/mfosec/web3-rag-mcp/content/` updates:
+
+```bash
+python3 scripts/import-rag-corpus.py
+```
+
+Vault: open **`Web3 Security`** → start at **`00-index/Web3 Graph Hub`**.
+
+Obsidian Importer plugin enabled for other formats: [help](https://obsidian.md/help/plugins/importer).
+
+---
+
 ## Sync scripts
 
 ```bash
