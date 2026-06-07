@@ -1,6 +1,6 @@
 {
   "name": "Web3 BB Pre-Scan Pipeline",
-  "description": "Local agent: Obsidian memory, RAG preflight, x-ray, solidity-auditor. LEADs only.",
+  "description": "Cloud agent: git-first architecture, RAG preflight, x-ray, solidity-auditor. LEADs to git. Obsidian via sync.",
   "workflow": {
     "triggers": [
       {
@@ -27,7 +27,7 @@
     ],
     "prompts": [
       {
-        "prompt": "You are BB-Scan (Otomasyon 2). Follow automations/bb-scan-prompt.md. Obsidian Web3-Security vault is canonical — use obsidian-web3 + web3-bbp-rag MCP. Never submit bounty reports."
+        "prompt": "You are BB-Scan (Otomasyon 2). Follow automations/bb-scan-prompt.md in this repo. Git workspace is primary state — read daily pick from 20-bounties/, write findings to 30-findings/, commit + push. Pashov skills are at .cursor/skills/pashov/. web3-bbp-rag MCP is mandatory; obsidian-web3 MCP is optional fallback only. Never submit bounty reports."
       }
     ],
     "model": "",
