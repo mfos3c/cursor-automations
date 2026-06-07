@@ -1,12 +1,19 @@
-# Obsidian vault — read-only mirror target; git repo is source of truth for pipeline I/O.
+# Obsidian Web3-Security vault is the canonical memory layer for the whole system.
+# Git repo (cursor-automations) is a transport/backup bridge for cloud agents only.
 
 vault_path: "/Users/mfosec/Documents/Obsidian Vaults/Web3-Security"
+vault_name: "Web3-Security"
 
-# Paths inside this repo (committed to git) — mirror vault layout
-repo_paths:
+# Canonical paths (Obsidian vault layout — same folders mirrored in repo for cloud)
+paths:
   daily_picks: "20-bounties"
   findings: "30-findings"
-  snapshots: "data"
+  reference: "50-reference"
+  snapshots: "data"  # JSON cache; repo-only, not mirrored to vault
 
-# Run after git pull/push to refresh Obsidian UI (local only)
-sync_script: "scripts/sync-to-obsidian.sh"
+# Cloud BB-Discover cannot call Obsidian MCP → writes repo → inbound sync to vault
+inbound_sync: "scripts/sync-to-obsidian.sh"   # git/repo → vault
+outbound_sync: "scripts/sync-from-obsidian.sh" # vault → repo (after local MCP writes)
+
+# Morning routine before BB-Scan (09:25 TR): merge cloud PR, then inbound sync
+pull_and_sync: "scripts/pull-and-sync.sh"

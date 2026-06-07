@@ -1,6 +1,6 @@
 {
   "name": "Web3 BB Pre-Scan Pipeline",
-  "description": "Local agent: git I/O, RAG preflight, x-ray, solidity-auditor. LEADs only — never submit.",
+  "description": "Local agent: Obsidian memory, RAG preflight, x-ray, solidity-auditor. LEADs only.",
   "workflow": {
     "triggers": [
       {
@@ -13,6 +13,13 @@
       {
         "mcp": {
           "server": {
+            "name": "obsidian-web3"
+          }
+        }
+      },
+      {
+        "mcp": {
+          "server": {
             "name": "web3-bbp-rag"
           }
         }
@@ -20,7 +27,7 @@
     ],
     "prompts": [
       {
-        "prompt": "You are BB-Scan (Otomasyon 2). At run start read and follow exactly automations/bb-scan-prompt.md from mfos3c/cursor-automations (main). Git-only I/O — no Obsidian MCP. Use web3-bbp-rag MCP. Never submit bounty reports."
+        "prompt": "You are BB-Scan (Otomasyon 2). Follow automations/bb-scan-prompt.md. Obsidian Web3-Security vault is canonical — use obsidian-web3 + web3-bbp-rag MCP. Never submit bounty reports."
       }
     ],
     "model": "",

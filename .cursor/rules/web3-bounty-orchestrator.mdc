@@ -1,5 +1,5 @@
 ---
-description: Web3 bug bounty orchestrator — git-backed discovery, preflight, scan pipeline
+description: Web3 bug bounty orchestrator — Obsidian-first memory, git cloud bridge
 globs:
   - config/**
   - templates/**
@@ -12,24 +12,22 @@ alwaysApply: false
 
 # Web3 Bounty Orchestrator
 
-Git is the source of truth for pipeline I/O. Obsidian vault is a local mirror only.
+**Obsidian Web3-Security vault is the canonical memory** (graph, wikilinks, findings, daily picks). Git repo is transport for cloud BB-Discover only.
 
-1. **BB-Discover** (cloud) — fetch, score programs; commit `20-bounties/daily-pick-*.md`
-2. **BB-Scan** (local) — RAG preflight, x-ray, solidity-auditor; commit `30-findings/*-scan-*.md`
+1. **BB-Discover** (cloud) → git commit `20-bounties/` → `./scripts/sync-to-obsidian.sh` → vault
+2. **BB-Scan** (local) → **obsidian-web3** read/write vault + **web3-bbp-rag** preflight
+3. **Hermes** (future) → obsidian-web3 + web3-bbp-rag + git read
 
 ## Rules
 
-- Never submit bounty reports from automations
-- Never use Obsidian MCP in automations — read/write repo paths only
-- After local commits, run `scripts/sync-to-obsidian.sh` to mirror into vault
-- Never PoC or clone repos in BB-Discover
-- Apply `config/scoring.yaml` hard filters before scoring
-- HackenProof rep filter: user rep = 90; deposit > $100 → SKIP
+- Never submit from automations
+- BB-Scan: obsidian-web3 primary; optional `sync-from-obsidian.sh` to git
+- BB-Discover: cannot use Obsidian MCP; writes repo paths matching vault layout
+- Apply `config/scoring.yaml` hard filters
 
-## Git paths (canonical)
+## Vault paths (canonical)
 
-- Daily pick: `20-bounties/daily-pick-YYYY-MM-DD.md`
-- Scan output: `30-findings/{slug}-scan-YYYY-MM-DD.md`
-- Snapshot cache: `data/snapshot-YYYY-MM-DD.json`
+- `20-bounties/daily-pick-YYYY-MM-DD.md`
+- `30-findings/{slug}-scan-YYYY-MM-DD.md`
 
-Vault mirror: see `config/vault.yaml`
+See `config/vault.yaml`
