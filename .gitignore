@@ -1,4 +1,5 @@
 data/snapshot-*.json
+data/daily-pick-*.md
 .env
 .env.*
 *.local

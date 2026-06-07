@@ -6,15 +6,22 @@ Discover, normalize, score, and select the best smart-contract bug bounty progra
 
 ## Workspace
 
-Use this repository root: `/Users/mfosec/Desktop/cursor_automations`
+Repository root (git source of truth): linked `mfos3c/cursor-automations` on branch `main`.
 
 Read before every run:
 - `config/scoring.yaml` — user profile, weights, hard filters, platform URLs
 - `config/chains.yaml` — chain → RPC/explorer mapping
 - `config/services.yaml` — which APIs to activate per phase
+- `config/vault.yaml` — git ↔ Obsidian mirror paths (sync is local-only; do not call Obsidian MCP)
 - `templates/program-schema.json` — output schema
 - `templates/recon-prompt.md` — fill for top pick
-- `templates/preflight-note.md` — Obsidian note shape
+- `templates/preflight-note.md` — daily pick note shape
+
+## Git-only I/O (no Obsidian MCP)
+
+All pipeline outputs are **committed to this repo**. BB-Scan reads from git paths; a local script mirrors markdown into the Obsidian vault for human reading.
+
+**Do not use obsidian-web3 or any Obsidian MCP.**
 
 ## Platforms (fetch all; mark login-gated low confidence if blocked)
 
@@ -55,14 +62,20 @@ For the winning program's chains, resolve entries in config/chains.yaml. Build s
 
 Embed in recon_prompt: RPC env vars, explorer APIs, foundry fork notes, prohibited third-party tools from program rules.
 
-## Outputs (required every run)
+## Outputs (required every run — git commit)
 
 1. **Cache:** `data/snapshot-YYYY-MM-DD.json` — array of all normalized programs with scores
-2. **Obsidian note** via obsidian-web3 MCP if available in this session; otherwise write markdown to `data/daily-pick-YYYY-MM-DD.md` for manual sync:
-   - Vault path: `20-bounties/daily-pick-YYYY-MM-DD.md`
-   - Use templates/preflight-note.md structure
+2. **Daily pick (canonical):** `20-bounties/daily-pick-YYYY-MM-DD.md`
+   - Use `templates/preflight-note.md` structure
    - Include full recon_prompt in the note body
-3. **Reply:** one-line summary: verdict, program name, score, Obsidian/cache path
+   - Frontmatter must include `verdict`, `score`, `platform`, `url`
+3. **Commit:** stage both files, commit with message `bb-discover: daily pick YYYY-MM-DD`, push to the automation branch (PR to `main` is OK)
+
+Do **not** write to `data/daily-pick-*.md` (deprecated).
+
+## Reply
+
+One-line summary: verdict, program name, score, git path.
 
 ## Safety
 

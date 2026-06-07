@@ -1,0 +1,12 @@
+# Obsidian vault — read-only mirror target; git repo is source of truth for pipeline I/O.
+
+vault_path: "/Users/mfosec/Documents/Obsidian Vaults/Web3-Security"
+
+# Paths inside this repo (committed to git) — mirror vault layout
+repo_paths:
+  daily_picks: "20-bounties"
+  findings: "30-findings"
+  snapshots: "data"
+
+# Run after git pull/push to refresh Obsidian UI (local only)
+sync_script: "scripts/sync-to-obsidian.sh"

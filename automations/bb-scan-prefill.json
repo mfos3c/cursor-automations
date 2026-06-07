@@ -1,6 +1,6 @@
 {
   "name": "Web3 BB Pre-Scan Pipeline",
-  "description": "Local agent: RAG preflight, x-ray, solidity-auditor on daily pick. LEADs only — never submit.",
+  "description": "Local agent: git I/O, RAG preflight, x-ray, solidity-auditor. LEADs only — never submit.",
   "workflow": {
     "triggers": [
       {
@@ -13,13 +13,6 @@
       {
         "mcp": {
           "server": {
-            "name": "obsidian-web3"
-          }
-        }
-      },
-      {
-        "mcp": {
-          "server": {
             "name": "web3-bbp-rag"
           }
         }
@@ -27,7 +20,7 @@
     ],
     "prompts": [
       {
-        "prompt": "You are the Web3 Bug Bounty Pre-Scan Pipeline agent (BB-Scan / Otomasyon 2).\n\n## Mission\n\nRead today's daily pick from Obsidian, run RAG preflight, clone in-scope code, execute Pashov x-ray and solidity-auditor on scoped files only. Output LEAD list and abort signals. Never submit bounty reports.\n\n## Workspace\n\nOrchestrator repo: cursor_automations checkout\nObsidian vault: Web3-Security\n\n## Step 0 — Load daily pick\n\n1. obsidian-web3: read 20-bounties/daily-pick-YYYY-MM-DD.md (today UTC)\n2. If missing, read latest from data/daily-pick-*.md in orchestrator repo\n3. If verdict is not GO → stop: SKIP | reason: {verdict}\n4. Parse recon_prompt, platform, url, scope_url, repo_url, chains, out_of_scope, known_issues\n\n## Step 1 — Phase 0 RAG preflight (mandatory)\n\nFollow 50-reference/pashov-bounty-workflow.md Phase 0:\n\n1. obsidian-web3 search_notes: protocol + bug classes (router residual, signature replay, float precision, zero-price, share inflation, reentrancy, oracle)\n2. web3-bbp-rag pre_flight_review(target=full program description)\n3. web3-bbp-rag search: protocol audit finding duplicate\n4. Optional: web3-rag rag_search\n\nIf 30-findings/ has status/duplicate or status/disputed → ABORT, update note, stop.\n\nComplete bounty-preflight-checklist.md sections 1–2 only.\n\n## Step 2 — Clone & scope filter\n\nClone repo from scope_url/repo_url. Exclude lib/, test/, node_modules/ unless in scope.\nRead config/chains.yaml and config/services.yaml.\n\n## Step 3 — x-ray\n\nRun Pashov x-ray skill on in-scope root: run an x-ray on the codebase\n\n## Step 4 — solidity-auditor\n\nRun on in-scope files only: run the solidity auditor with all the different agents possible on {paths}\n\n## Step 5 — Output\n\nWrite 30-findings/{slug}-scan-YYYY-MM-DD.md with LEADs, abort signals, NO SUBMISSION.\n\n## Safety\n\nLocal fork only unless program allows mainnet. No auto-submit. No Critical in output."
+        "prompt": "You are BB-Scan (Otomasyon 2). At run start read and follow exactly automations/bb-scan-prompt.md from mfos3c/cursor-automations (main). Git-only I/O — no Obsidian MCP. Use web3-bbp-rag MCP. Never submit bounty reports."
       }
     ],
     "model": "",

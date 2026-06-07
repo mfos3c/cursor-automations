@@ -7,183 +7,153 @@ Two-stage pipeline for smart-contract bug bounty discovery and pre-scan. **Autom
 | **BB-Discover** | Cloud Agent | `0 6 * * 1-5` | Weekdays 09:00 |
 | **BB-Scan** | Local Agent | `30 6 * * 1-5` | Weekdays 09:30 |
 
-## Architecture
+## Architecture (git-only)
 
 ```
-BB-Discover (cloud)  →  20-bounties/daily-pick-*.md  →  BB-Scan (local)  →  30-findings/*-scan-*.md
+BB-Discover (cloud)  →  git commit  →  20-bounties/daily-pick-*.md
+                                              ↓ git pull
+BB-Scan (local)    →  git commit  →  30-findings/*-scan-*.md
+                                              ↓ scripts/sync-to-obsidian.sh
+Obsidian vault     ←  mirror only (read in Obsidian app)
 ```
 
-Prefill definitions: [`automations/bb-discover-prefill.json`](automations/bb-discover-prefill.json), [`automations/bb-scan-prefill.json`](automations/bb-scan-prefill.json)
+**Git is the source of truth.** Obsidian MCP is not used. Markdown is mirrored into the Web3-Security vault locally for reading.
 
-Full prompts: [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md), [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md)
+Prefill: [`automations/bb-discover-prefill.json`](automations/bb-discover-prefill.json), [`automations/bb-scan-prefill.json`](automations/bb-scan-prefill.json)
+
+Prompts: [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md), [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md)
+
+Config: [`config/vault.yaml`](config/vault.yaml)
+
+---
+
+## Git workflow
+
+### Repo paths (committed)
+
+| Path | Writer | Purpose |
+|------|--------|---------|
+| `data/snapshot-YYYY-MM-DD.json` | BB-Discover | Normalized program cache |
+| `20-bounties/daily-pick-YYYY-MM-DD.md` | BB-Discover | Daily winner + recon prompt |
+| `30-findings/{slug}-scan-YYYY-MM-DD.md` | BB-Scan | LEADs, abort signals |
+| `30-findings/*.md` (historical) | Imported once | Duplicate radar |
+
+### Local scripts
+
+```bash
+# One-time: import existing vault findings into repo
+./scripts/sync-from-vault.sh
+
+# Before BB-Scan (09:30 TR): pull cloud output + mirror to Obsidian
+./scripts/pull-and-sync.sh
+
+# After BB-Scan commit: mirror new findings into Obsidian
+./scripts/sync-to-obsidian.sh
+```
+
+Optional cron on your Mac (09:25 TR = 06:25 UTC weekdays):
+
+```cron
+25 6 * * 1-5 cd /Users/mfosec/Desktop/cursor_automations && ./scripts/pull-and-sync.sh
+```
+
+### Cloud agent PRs
+
+BB-Discover commits to a cloud-agent branch and opens a PR. **Merge to `main`** before BB-Scan runs (or run `./scripts/pull-and-sync.sh` after merge).
 
 ---
 
 ## Prerequisites
 
-### 1. MCP Dashboard ([cursor.com → MCP](https://cursor.com/settings/mcp))
+### 1. MCP (minimal)
 
-Automations only resolve **dashboard-connected** MCP servers.
+| MCP | BB-Discover | BB-Scan |
+|-----|-------------|---------|
+| Bright Data | **Required** | — |
+| web3-bbp-rag | — | **Required** (local `~/.cursor/mcp.json`) |
 
-| MCP | BB-Discover | BB-Scan | Action |
-|-----|-------------|---------|--------|
-| Bright Data | Required | — | Verify plugin connected |
-| obsidian-web3 | Optional fallback | **Required** | Add + connect |
-| web3-bbp-rag | — | **Required** | Add + connect |
-| web3-rag | — | Optional | Recommended |
-
-Local-only MCPs (`cursor-ide-browser`, project `mcp.json`) **do not work** in Automations.
-
-If the editor shows **Set up MCP** on a row, fix connection before saving.
+**No obsidian-web3** — all notes via git files.
 
 ### 2. Cloud Agent
 
-Enable at [cursor.com/dashboard → Cloud Agents](https://cursor.com/dashboard?tab=cloud-agents) for BB-Discover.
+[Dashboard → Cloud Agents](https://cursor.com/dashboard?tab=cloud-agents) for BB-Discover.
 
-### 3. GitHub repo (BB-Discover cloud)
+### 3. GitHub
 
-Cloud agents need this repo on GitHub:
+Repo: [github.com/mfos3c/cursor-automations](https://github.com/mfos3c/cursor-automations)
 
-1. Create remote repo (e.g. `your-user/cursor-automations`)
-2. Push this folder
-3. In BB-Discover automation editor → set **Repository** to that repo + `main`
-
-BB-Scan prefill uses `gitConfig.repo: mfosec/cursor_automations` — **update to your GitHub path** in the editor.
+Both automations → **Repository** `mfos3c/cursor-automations` + branch **`main`**.
 
 ### 4. Pashov skills (BB-Scan local)
 
 ```bash
 ls ~/.cursor/skills/pashov/x-ray/SKILL.md
 ls ~/.cursor/skills/pashov/solidity-auditor/SKILL.md
-# Update: cd ~/.cursor/skills/pashov && git pull
 ```
 
-### 5. Optional config images
+### 5. Environment variables (BB-Scan)
 
-Add reference images to extend chain/service maps:
-
-- `config/chains.jpeg` → extend [`config/chains.yaml`](config/chains.yaml)
-- `config/services_activate.jpg` → extend [`config/services.yaml`](config/services.yaml)
-
-### 6. Environment variables (BB-Scan)
-
-Set in shell or `.env` (not committed):
-
-- `ALCHEMY_*_RPC` / `INFURA_*_RPC` per chain in `config/chains.yaml`
-- `ETHERSCAN_API_KEY`, `ARBISCAN_API_KEY`, etc.
+`ALCHEMY_*_RPC`, `ETHERSCAN_API_KEY`, etc. per [`config/chains.yaml`](config/chains.yaml)
 
 ---
 
 ## Scoring profile
 
-From [`config/scoring.yaml`](config/scoring.yaml):
-
-- HackenProof reputation: **90** (skip if program requires higher)
-- Max deposit: **$100** (skip if higher)
-- Min reward: **$50,000**
-- Min score for GO: **60**
-- Prefer new/updated within **14 days**
+From [`config/scoring.yaml`](config/scoring.yaml): rep ≤ 90, deposit ≤ $100, reward ≥ $50k, min GO score 60.
 
 ---
 
-## HackenProof (login-gated)
+## Cursor automations (live)
 
-The HackenProof dashboard requires an authenticated session. Cloud BB-Discover may mark HackenProof programs as `confidence: low` without your cookies.
+| Automation | ID | Edit |
+|------------|-----|------|
+| **BB-Discover** | `eca767f4-3c97-4e89-8957-9c2e401b75e7` | [Open](https://cursor.com/automations/eca767f4-3c97-4e89-8957-9c2e401b75e7) |
+| **BB-Scan** | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` | [Open](https://cursor.com/automations/347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f) |
 
-**Workarounds:**
+### BB-Discover
 
-1. **Weekly local sync** — export program list to `data/hackenproof-manual-YYYY-MM-DD.json` (same schema as snapshot)
-2. **Browser session** — not supported in cloud Automations; use manual sync
-3. **Pilot without HackenProof** — Immunefi + Sherlock + Cantina first
+- Tools: **Bright Data** only
+- Outputs: `20-bounties/daily-pick-*.md` + `data/snapshot-*.json` → git commit
+- Update editor instructions from [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md) after pull
 
-Reputation filter still applies when data is available: skip programs requiring rep > 90.
+### BB-Scan
+
+- Tools: **web3-bbp-rag** only (local MCP in Cursor Desktop session)
+- Step 0: `git pull` → read `20-bounties/daily-pick-*.md`
+- Output: `30-findings/*-scan-*.md` → commit → `./scripts/sync-to-obsidian.sh`
+- Update editor instructions from [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md) after pull
 
 ---
 
-## Create automations in Cursor
+## Daily routine
 
-**BB-Discover** was opened in the Automations editor with prefill from `automations/bb-discover-prefill.json`.
-
-**BB-Scan** — if the second editor tab did not open, create manually from [`automations/bb-scan-prefill.json`](automations/bb-scan-prefill.json).
-
-### BB-Discover (editor checklist)
-
-- Name: `Web3 BB Program Discovery`
-- Trigger: Cron `0 6 * * 1-5`
-- Runtime: **Cloud**
-- Tools: MCP → Bright Data
-- Instructions: [`automations/bb-discover-prompt.md`](automations/bb-discover-prompt.md)
-- Repository: `mfos3c/cursor-automations` on GitHub — https://github.com/mfos3c/cursor-automations
-
-**Important:** Cursor dashboard GitHub is connected as `turnikesistemleri`. To use this repo in cloud automations, click **Add Repositories** in the automation editor and grant Cursor access to `mfos3c/cursor-automations` (GitHub login as `mfos3c` may be required).
-
-### BB-Scan (editor checklist)
-
-- Name: `Web3 BB Pre-Scan Pipeline`
-- Trigger: Cron `30 6 * * 1-5`
-- Runtime: **Local**
-- Tools: MCP → obsidian-web3, web3-bbp-rag
-- Instructions: [`automations/bb-scan-prompt.md`](automations/bb-scan-prompt.md)
-- Repository: optional (local path `/Users/mfosec/Desktop/cursor_automations` works)
+1. **~09:00 TR** — BB-Discover runs (cloud), opens PR
+2. **You** — merge PR to `main` (or enable auto-merge)
+3. **09:25 TR** — `./scripts/pull-and-sync.sh` (or cron)
+4. **~09:30 TR** — BB-Scan runs (local, Desktop open)
+5. **After scan** — `./scripts/sync-to-obsidian.sh` if not in prompt
+6. **Human** — open Obsidian, review LEADs, manual checklist before PoC
 
 ---
 
 ## Pilot dry-run
 
-### Step 1 — MCP check
-
-- [ ] obsidian-web3 connected in dashboard
-- [ ] web3-bbp-rag connected
-- [ ] Bright Data connected
-
-### Step 2 — BB-Discover manual run
-
-1. Automations → BB-Discover → **Run once**
-2. Expect: `data/snapshot-YYYY-MM-DD.json` in repo (after cloud push) or run locally once
-3. Expect: Obsidian `20-bounties/daily-pick-YYYY-MM-DD.md` with verdict, score, recon_prompt
-4. Verify: no repo clone, no PoC, no submit
-
-### Step 3 — BB-Scan manual run
-
-1. Confirm daily pick has `verdict: GO`
-2. Run BB-Scan once (local)
-3. Expect: `30-findings/{slug}-scan-YYYY-MM-DD.md` with LEADs
-4. Verify: x-ray + auditor ran on in-scope paths only
-
-### Step 4 — Abort test
-
-Re-run BB-Scan against a target with known duplicate pattern (e.g. OKX router family in your vault). Expect `ABORT_DUPLICATE_RISK` and no clone.
-
-### Step 5 — Human handoff
-
-When scan returns LEADs:
-
-1. Open Agent chat
-2. `@20-bounties/daily-pick-*.md` + `@30-findings/*-scan-*.md`
-3. Manual checklist sections 3–7 before PoC
-4. Submit only after human GO
-
----
-
-## Outputs
-
-| Path | Writer | Content |
-|------|--------|---------|
-| `data/snapshot-YYYY-MM-DD.json` | BB-Discover | All normalized programs |
-| `data/daily-pick-YYYY-MM-DD.md` | BB-Discover fallback | If Obsidian MCP unavailable on cloud |
-| `20-bounties/daily-pick-YYYY-MM-DD.md` | BB-Discover | Daily winner + recon prompt |
-| `30-findings/{slug}-scan-YYYY-MM-DD.md` | BB-Scan | LEADs, abort signals |
+1. Fix Bright Data `API_TOKEN` if 401
+2. BB-Discover **Test run** → merge PR → verify `20-bounties/daily-pick-*.md` on `main`
+3. `./scripts/pull-and-sync.sh`
+4. BB-Scan **Test run** → verify `30-findings/*-scan-*.md` in repo + Obsidian mirror
 
 ---
 
 ## Safety
 
-- No automatic submission to any platform
-- Respect program prohibited_actions and Immunefi exclusions
+- No automatic submission
 - Local fork / read-only RPC by default
-- Known issues and prior audits = duplicate risk — abort first
+- Duplicate radar via repo `30-findings/` + web3-bbp-rag
 
-## Related (Obsidian)
+## Related (Obsidian vault — reference only)
+
+Playbooks stay in vault; pipeline I/O is git:
 
 - `50-reference/cursor-automations-bounty-playbook.md`
 - `50-reference/pashov-bounty-workflow.md`
