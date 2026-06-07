@@ -3,3 +3,9 @@ data/daily-pick-*.md
 .env
 .env.*
 *.local
+
+# BB-Scan: temp clone workspace (cloud automation working dir)
+scan-workspace/
+
+# Skill static assets (gifs, large binaries)
+.cursor/skills/static/
