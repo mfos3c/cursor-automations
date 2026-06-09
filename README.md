@@ -62,30 +62,51 @@ Obsidian Importer plugin enabled for other formats: [help](https://obsidian.md/h
 
 ---
 
-## Sync scripts
+## Auto bridge (cloud → main → Obsidian)
+
+Cloud agents push to `cursor/*` branches **without opening PRs**. Two layers fix that:
+
+| Layer | What | When |
+|-------|------|------|
+| **GitHub Actions** | `discover-bridge.yml` / `scan-bridge.yml` copy picks & findings → `main` | On cloud branch push |
+| **Mac launchd** | `pull-and-sync.sh` → Obsidian vault | Mon–Fri **09:25** local time |
+
+Install Mac sync (once):
 
 ```bash
-# After cloud PR merged → vault (before BB-Scan)
-./scripts/pull-and-sync.sh
-
-# Vault → git backup (after BB-Scan writes to Obsidian)
-./scripts/sync-from-obsidian.sh
-
-# One-time: import historical vault findings into repo mirror
-./scripts/sync-from-vault.sh
+./scripts/install-macos-sync.sh
 ```
 
-Cron (09:25 TR): `25 6 * * 1-5 cd .../cursor_automations && ./scripts/pull-and-sync.sh`
+Log: `~/Library/Logs/cursor-automations-pull-sync.log`
+
+Manual test anytime:
+
+```bash
+./scripts/pull-and-sync.sh
+```
+
+Fallback if Actions lag: `scripts/merge-latest-discover.sh` (called from pull-and-sync).
 
 ---
 
-## Daily routine
+## Sync scripts
 
-1. BB-Discover cloud run → PR
-2. Merge PR → `./scripts/pull-and-sync.sh`
-3. BB-Scan local (Desktop open, obsidian-web3 connected)
+```bash
+./scripts/pull-and-sync.sh          # fetch + merge discover + pull main + vault sync
+./scripts/merge-latest-discover.sh  # cloud branch → main (fallback)
+./scripts/sync-to-obsidian.sh       # repo → vault only
+./scripts/sync-from-obsidian.sh     # vault → repo backup
+./scripts/sync-from-vault.sh        # one-time historical import
+```
+
+---
+
+## Daily routine (hands-off)
+
+1. **09:00** — BB-Discover cron (cloud) → branch push → **GitHub Action → main**
+2. **09:25** — launchd `pull-and-sync` → **Obsidian vault**
+3. **09:30** — BB-Scan local (Desktop open, obsidian-web3 + web3-bbp-rag)
 4. Optional `./scripts/sync-from-obsidian.sh` → git backup
-5. Obsidian graph + Hermes read vault
 
 ---
 
