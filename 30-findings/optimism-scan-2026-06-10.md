@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-10"
 status: status/lead
-updated: "2026-06-10T12:42:29Z"
+updated: "2026-06-10T16:00:55Z"
 ---
 
 # Optimism — BB-Scan (2026-06-10)
@@ -25,18 +25,18 @@ updated: "2026-06-10T12:42:29Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-10T12:42:29.451Z` |
+| Triggered at (UTC) | `2026-06-10T16:00:55.121Z` |
 
 ## Abort reason
 
 Step 1 requires `web3-bbp-rag` MCP preflight (`pre_flight_review`, `search`, `find_similar_audits`) as a hard prerequisite.  
-In this runtime, MCP discovery returned only `obsidian-web3`; `web3-bbp-rag` was unavailable, so mandatory preflight could not be executed.
+In this runtime, full MCP catalog discovery returned only `obsidian-web3`; `web3-bbp-rag` was unavailable, so mandatory preflight could not be executed.
 
 Because duplicate-risk triage is mandatory before code scanning, the run was stopped prior to clone/x-ray/solidity-auditor.
 
 ## Prior-art links (workspace scan)
 
-No prior `30-findings/` notes (besides this same-day scan file) matched Optimism or OP Stack keywords in this repository run.
+No prior `30-findings/` notes (besides this same-day scan file) matched Optimism or OP Stack keywords in this repository run (`optimism|op stack|op-stack|ethereum-optimism`).
 
 Related prior-art notes present in workspace (different protocols):
 - [[30-findings/okx-dex-router-residual-drain-442]]
@@ -49,6 +49,7 @@ Related prior-art notes present in workspace (different protocols):
 
 - `web3-bbp-rag`: **not available in MCP catalog** during this run.
 - `obsidian-web3` fallback search (`optimism duplicate disputed bridge governance accounting`): no matching note hits returned.
+- `obsidian-web3` directory probe for `30-findings`: path not found in current connected vault context.
 - Result: duplicate radar remains **inconclusive**; run intentionally aborted.
 
 ## OOS reminders from daily pick
