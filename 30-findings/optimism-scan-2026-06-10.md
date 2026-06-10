@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-10"
 status: status/lead
-updated: "2026-06-10"
+updated: "2026-06-10T12:42:29Z"
 ---
 
 # Optimism — BB-Scan (2026-06-10)
@@ -25,6 +25,7 @@ updated: "2026-06-10"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
+| Triggered at (UTC) | `2026-06-10T12:42:29.451Z` |
 
 ## Abort reason
 
@@ -35,7 +36,7 @@ Because duplicate-risk triage is mandatory before code scanning, the run was sto
 
 ## Prior-art links (workspace scan)
 
-No prior `30-findings/` notes matched Optimism or OP Stack keywords in this repository run.
+No prior `30-findings/` notes (besides this same-day scan file) matched Optimism or OP Stack keywords in this repository run.
 
 Related prior-art notes present in workspace (different protocols):
 - [[30-findings/okx-dex-router-residual-drain-442]]
@@ -47,7 +48,7 @@ Related prior-art notes present in workspace (different protocols):
 ## Duplicate radar summary
 
 - `web3-bbp-rag`: **not available in MCP catalog** during this run.
-- `obsidian-web3` fallback search: no matching note hits returned for Optimism duplicate probes.
+- `obsidian-web3` fallback search (`optimism duplicate disputed bridge governance accounting`): no matching note hits returned.
 - Result: duplicate radar remains **inconclusive**; run intentionally aborted.
 
 ## OOS reminders from daily pick
