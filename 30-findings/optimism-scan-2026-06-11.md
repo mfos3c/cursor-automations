@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-11"
 status: status/lead
-updated: "2026-06-11T04:02:32Z"
+updated: "2026-06-11T08:01:09Z"
 ---
 
 # Optimism — BB-Scan (2026-06-11)
@@ -25,12 +25,12 @@ updated: "2026-06-11T04:02:32Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-11T04:01:04.738Z` |
+| Triggered at (UTC) | `2026-06-11T08:01:09.845Z` |
 
 ## Daily pick source
 
-- `20-bounties/daily-pick-2026-06-11.md` not present in workspace.
-- Fallback policy applied: used most recent daily pick `[[20-bounties/daily-pick-2026-06-10]]` (verdict `GO`).
+- Daily pick found in workspace: `[[20-bounties/daily-pick-2026-06-11]]`.
+- Parsed verdict: `GO`.
 
 ## Abort reason
 
@@ -53,12 +53,13 @@ Related prior-art notes present in workspace (different protocols):
 
 Optional fallback (`obsidian-web3`) results:
 - `search_notes` query (`optimism duplicate disputed bridge governance accounting`) returned no note hits.
-- `list_directory` for `30-findings` returned "Directory not found" in current connected vault context.
+- `list_directory` for `30-findings` returned "Directory not found".
+- `get_vault_stats` failed with `ENOENT` for `/Users/mfosec/Documents/Obsidian Vaults/Web3-Security` (vault bridge not mounted in this runtime).
 
 ## Duplicate radar summary
 
 - `web3-bbp-rag`: **not available in MCP catalog** during this run.
-- Workspace prior-art check found only previous abort note for same protocol/day-1.
+- Workspace prior-art check found: [[30-findings/optimism-scan-2026-06-10]].
 - Duplicate radar remains **inconclusive** due missing mandatory RAG service.
 
 ## OOS reminders from daily pick
