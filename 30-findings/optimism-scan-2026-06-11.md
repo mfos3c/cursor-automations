@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-11"
 status: status/lead
-updated: "2026-06-11T12:01:30.576Z"
+updated: "2026-06-11T16:00:05.107Z"
 ---
 
 # Optimism — BB-Scan (2026-06-11)
@@ -25,7 +25,7 @@ updated: "2026-06-11T12:01:30.576Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-11T12:01:30.576Z` |
+| Triggered at (UTC) | `2026-06-11T16:00:05.107Z` |
 
 ## Daily pick source
 
@@ -35,7 +35,7 @@ updated: "2026-06-11T12:01:30.576Z"
 ## Abort reason
 
 Step 1 requires `web3-bbp-rag` MCP preflight (`pre_flight_review`, `search`, `find_similar_audits`) as a hard prerequisite.
-In this runtime, MCP catalog discovery returned only `obsidian-web3`; `web3-bbp-rag` was unavailable, so mandatory preflight could not be executed.
+In this runtime, MCP catalog discovery (run time: `2026-06-11T16:00:05.107Z`) returned only `obsidian-web3`; `web3-bbp-rag` was unavailable, so mandatory preflight could not be executed.
 
 Because duplicate-risk triage is mandatory before code scanning, this run was stopped prior to clone/x-ray/solidity-auditor.
 
