@@ -1,0 +1,246 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems/applications/websites",
+      "Any denial-of-service attacks against project assets",
+      "Automated testing generating significant amounts of traffic",
+      "Public disclosure of an unpatched vulnerability",
+      "Testnet and mock files are not covered under Primacy of Impact"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)"
+    ],
+    "prohibited_actions": [
+      "No mainnet or public testnet testing; local forks only",
+      "No testing with pricing oracles or third-party smart contracts",
+      "No testing with third-party systems/apps/websites",
+      "No social engineering or phishing",
+      "No DoS/high-traffic automated testing",
+      "No public disclosure before resolution"
+    ],
+    "submission_rules": [
+      "PoC required for all severities",
+      "KYC required for payout",
+      "Submit through Immunefi dashboard"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts",
+      "op-node",
+      "op-geth",
+      "Latest eligible official protocol-upgrade governance proposal calldata/code"
+    ],
+    "risk_flags": [
+      "Sherlock/Cantina prior audit findings are duplicate-risk baseline",
+      "Bright Data MCP auth failed (401); fallback source collection used this run"
+    ],
+    "scoring": 100,
+    "selection_reason": "High reward ceiling, no deposit, clear smart-contract scope/rules, and updated within recency window.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Aave V4",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/300?tab=submission",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/300?tab=submission",
+    "last_updated": "2026-05-18",
+    "published_at": "2026-05-18",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Smart contracts",
+    "languages": [],
+    "reward_max": 2500000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Program detail page rendered partially; rules/scope parsing incomplete"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Out-of-scope and known-issue sections unclear from accessible page content",
+      "Sherlock prior audit findings are duplicate-risk candidates"
+    ],
+    "scoring": 40,
+    "selection_reason": "High ceiling but insufficient parseable rules/scope details in fetched content.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git"
+    ]
+  },
+  {
+    "program_name": "Coinbase Onchain Bug Bounty",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/55316f42-3c5e-4746-9bd0-0f18dcbc344b",
+    "scope_url": "https://cantina.xyz/bounties/55316f42-3c5e-4746-9bd0-0f18dcbc344b",
+    "last_updated": "2025-07-08",
+    "published_at": "2025-07-08",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "base"
+    ],
+    "stack": "Onchain smart contracts",
+    "languages": [],
+    "reward_max": 5000000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Off-chain components (report through Coinbase HackerOne program)"
+    ],
+    "known_issues": [],
+    "prohibited_actions": [
+      "No unauthorized testing on production (mainnet/public testnet) without authorization",
+      "No public disclosure without written consent",
+      "No exploitation/data exfiltration/social engineering/service disruption"
+    ],
+    "submission_rules": [
+      "Report through Cantina",
+      "Include PoC and reproducible steps",
+      "Submit ideally within 24 hours of discovery",
+      "First valid reporter rule applies"
+    ],
+    "in_scope_contracts": [
+      "Mainnet smart contracts deployed by Coinbase",
+      "Base smart contracts deployed by Coinbase"
+    ],
+    "risk_flags": [
+      "Cantina prior audit findings can create duplicate-risk overlap for known classes",
+      "Not selected because a higher-scoring candidate exists today"
+    ],
+    "scoring": 70,
+    "selection_reason": "Strong reward and clear SC scope with no deposit, but not the top score today.",
+    "confidence": "high",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Aptos Network",
+    "platform": "hackenproof",
+    "url": "https://hackenproof.com/programs/aptos-network",
+    "scope_url": "https://hackenproof.com/programs/aptos-network",
+    "repo_url": "https://github.com/aptos-labs/aptos-core/tree/mainnet",
+    "published_at": "2026-06-11",
+    "new_or_updated": false,
+    "chains": [
+      "aptos"
+    ],
+    "stack": "L1 blockchain + smart contracts",
+    "languages": [
+      "Move",
+      "Rust"
+    ],
+    "reward_max": 1000000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 20,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Social engineering",
+      "Most network DoS attacks",
+      "Specified aptos-core subpaths and AIP features listed as out of scope"
+    ],
+    "known_issues": [],
+    "prohibited_actions": [
+      "Avoid testing on live mainnet/testnet/devnet; local testing only",
+      "Avoid disrupting systems/harming users",
+      "No extortion",
+      "No disclosure outside program without written consent"
+    ],
+    "submission_rules": [
+      "POC required",
+      "Report within 24 hours from discovery",
+      "Identity verification required for reward"
+    ],
+    "in_scope_contracts": [
+      "aptos-core mainnet branch (excluding listed out-of-scope directories/features)"
+    ],
+    "risk_flags": [
+      "HackenProof main dashboard is login-gated; program page used as fallback source"
+    ],
+    "scoring": 60,
+    "selection_reason": "Eligible SC scope with acceptable submission fee and strong rewards, but lower rank than daily winner.",
+    "confidence": "high",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git"
+    ]
+  },
+  {
+    "program_name": "Chainlink (HackerOne listing)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/chainlink",
+    "scope_url": "https://www.hackerone.com/bug-bounty-programs",
+    "published_at": "2026-06-11",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Unknown (listing-level only)",
+    "languages": [],
+    "reward_max": 50,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Direct program page content blocked by anti-bot/JS-gated response in this run"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "HackerOne opportunities/program pages were not parseable from cloud fetch path",
+      "Insufficient rule clarity for GO decision"
+    ],
+    "scoring": 15,
+    "selection_reason": "Insufficient accessible detail and low confidence despite probable SC relevance.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git"
+    ]
+  }
+]
