@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-12"
 status: status/lead
-updated: "2026-06-12T04:02:59.425Z"
+updated: "2026-06-12T08:01:35.584Z"
 ---
 
 # Optimism — BB-Scan (2026-06-12)
@@ -25,13 +25,18 @@ updated: "2026-06-12T04:02:59.425Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-12T04:02:59.425Z` |
+| Triggered at (UTC) | `2026-06-12T08:01:35.584Z` |
 
 ## Daily pick source
 
-- Today's file `20-bounties/daily-pick-2026-06-12.md` was not present in workspace.
-- Fallback rule applied: latest file used `[[20-bounties/daily-pick-2026-06-11]]`.
-- Parsed verdict from fallback file: `GO`.
+- Source file loaded: `[[20-bounties/daily-pick-2026-06-12]]`.
+- Parsed verdict: `GO`.
+- Parsed fields:
+  - `platform`: `immunefi`
+  - `url`: `https://immunefi.com/bug-bounty/optimism/`
+  - `scope_url`: `https://immunefi.com/bug-bounty/optimism/scope/`
+  - `repo_url`: `https://github.com/ethereum-optimism/optimism`
+  - `chains`: `optimism`, `ethereum`
 
 ## Abort reason
 
@@ -56,7 +61,6 @@ Related prior-art notes present in workspace (different protocols):
 
 Optional fallback (`obsidian-web3`) results:
 - `search_notes` query (`optimism duplicate disputed bridge governance accounting`) returned `[]` (no note hits).
-- `get_vault_stats` failed with `ENOENT` for `/Users/mfosec/Documents/Obsidian Vaults/Web3-Security` (vault bridge not mounted in this runtime).
 
 ## Duplicate radar summary
 
@@ -70,7 +74,9 @@ Optional fallback (`obsidian-web3`) results:
 - No testing with pricing oracles or third-party smart contracts.
 - No testing with third-party systems/applications/websites.
 - No denial-of-service or high-volume automated traffic.
-- Testnet and mock files are not covered under Primacy of Impact.
+- No public disclosure of unpatched vulnerabilities.
+- No phishing/social-engineering dependent impacts.
+- Custom third-party token bridge implementations are out of scope.
 
 ## x-ray LEAD list
 
