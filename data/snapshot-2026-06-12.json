@@ -1,0 +1,326 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": 0,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Testing on mainnet or public testnet deployed code",
+      "Testing with pricing oracles or third-party smart contracts",
+      "Testing with third-party systems/applications/websites",
+      "Denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing or social engineering",
+      "Impacts requiring privileged keys/addresses without additional exploit",
+      "Known devp2p issues already documented by Ethereum",
+      "Custom token bridge implementations written by third parties"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Bridge foot-gun scenarios documented by Optimism (aliased tx.origin recovery edge-case, token misconfiguration classes)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No testing on live mainnet/public testnet deployments",
+      "No testing against third-party systems or contracts",
+      "No denial-of-service or service degradation activity",
+      "No social engineering or phishing",
+      "No public disclosure before coordinated resolution"
+    ],
+    "submission_rules": [
+      "PoC is required",
+      "Submit through Immunefi only",
+      "Follow Immunefi default out-of-scope and prohibited activity rules",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger",
+      "PermissionedDisputeGame"
+    ],
+    "risk_flags": [
+      "duplicate-risk-prior-audits",
+      "mixed-smart-contract-and-blockchain-client-scope",
+      "strict-prohibited-actions"
+    ],
+    "scoring": 100,
+    "selection_reason": "Highest score with high-confidence rules parsing, no deposit requirement, strong reward ceiling, and last update inside the 14-day recency window.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "scope_url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "last_updated": "2024-11-26",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum"
+    ],
+    "stack": "EVM AMM + web app + infra bounty",
+    "languages": [
+      "Solidity",
+      "TypeScript",
+      "Python"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "deposit_amount": 50,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Gas optimization suggestions without security impact",
+      "Theoretical vulnerabilities without practical exploit path",
+      "Issues in third-party protocols unless caused by Uniswap code",
+      "Known MEV strategies that work as intended",
+      "Phishing or user-error-only scenarios",
+      "Admin key compromise assumptions without enabling exploit",
+      "Governance attacks requiring majority control"
+    ],
+    "known_issues": [
+      "Program explicitly deprioritizes pre-production Reactor.sol",
+      "Duplicate of known issues is payout-ineligible",
+      "Sherlock/Cantina prior audit findings are duplicate-risk"
+    ],
+    "prohibited_actions": [
+      "No unauthorized testing on mainnet or public testnet",
+      "No testing against live hosted services",
+      "No public disclosure without written consent",
+      "No exploitation beyond minimum proof-of-concept",
+      "No private data access, service disruption, or social engineering"
+    ],
+    "submission_rules": [
+      "Submit directly through Spearbit/Cantina",
+      "Functional PoC required for all reports",
+      "Provide impact quantification and reproduction steps",
+      "Report as soon as possible (target within 24h)"
+    ],
+    "in_scope_contracts": [
+      "Uniswap v4 Core",
+      "Uniswap v3 Core/Periphery",
+      "Uniswap v2 contracts",
+      "Unichain L1 contracts",
+      "Token Launcher",
+      "Continuous Clearing Auction contracts"
+    ],
+    "risk_flags": [
+      "deposit-required",
+      "mixed-scope-smart-contract-web-infra",
+      "duplicate-risk-prior-audits"
+    ],
+    "scoring": 60,
+    "selection_reason": "Meets GO threshold mathematically but ranked below Immunefi Optimism due no recency bonus and deposit requirement.",
+    "confidence": "high",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Aave V4",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "last_updated": "2026-05-18",
+    "published_at": "2026-05-18",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum"
+    ],
+    "stack": "EVM lending protocol",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 2500000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": 0,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Sherlock listing/details accessible, but out-of-scope and known-issues sections were not parseable from public fetch in this run",
+      "Prior Sherlock/Cantina audit findings must be treated as duplicate-risk"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Submit through Sherlock bounty workflow"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-unparsed",
+      "known-issues-unclear",
+      "duplicate-risk-prior-audits"
+    ],
+    "scoring": 60,
+    "selection_reason": "Potentially strong reward profile, but confidence is low because rules/known issues were not fully parseable.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "1inch Smart Contract",
+    "platform": "hackenproof",
+    "url": "https://hackenproof.com/programs/1inch-smart-contract",
+    "scope_url": "https://hackenproof.com/programs/1inch-smart-contract",
+    "repo_url": "https://github.com/1inch/limit-order-protocol",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "solana"
+    ],
+    "stack": "DEX aggregator smart contracts",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 500000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": 0,
+    "kyc_required": true,
+    "reputation_requirement": 100,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Redundant code and best-practice-only issues",
+      "Old compiler and style-guide violations",
+      "Micro gas optimizations (<1k gas)",
+      "Imported contract vulnerabilities",
+      "Theoretical/speculative exploits without business impact"
+    ],
+    "known_issues": [
+      "https://github.com/1inch/1inch-audits/tree/master",
+      "Prior Sherlock/Cantina audit findings should be treated as duplicate-risk where overlapping"
+    ],
+    "prohibited_actions": [
+      "No AI-generated or scanner-only reports",
+      "No access/modification of other users' data",
+      "No DoS/DDoS, social engineering, or spam",
+      "No service disruption or legal violations",
+      "No disclosure without explicit permission"
+    ],
+    "submission_rules": [
+      "PoC required",
+      "Report within 24 hours of discovery",
+      "Submit exclusively through HackenProof",
+      "First valid reporter requirement"
+    ],
+    "in_scope_contracts": [
+      "https://github.com/1inch/limit-order-protocol",
+      "https://github.com/1inch/fusion-protocol",
+      "https://github.com/1inch/token-plugins",
+      "https://github.com/1inch/farming",
+      "https://github.com/1inch/delegating",
+      "https://github.com/1inch/cross-chain-swap",
+      "https://github.com/1inch/solana-crosschain-protocol",
+      "https://github.com/1inch/solana-fusion"
+    ],
+    "risk_flags": [
+      "hard-filter-reputation-above-user-profile",
+      "listing-login-gated",
+      "duplicate-risk-prior-audits"
+    ],
+    "scoring": 70,
+    "selection_reason": "Hard filtered out because required reputation (100) exceeds configured user profile reputation (90).",
+    "confidence": "high",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Crypto.com",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/crypto",
+    "scope_url": "https://hackerone.com/crypto/policy_versions",
+    "repo_url": "https://github.com/crypto-com/h1-policy-guidelines",
+    "published_at": "2024-12-02",
+    "last_updated": "2025-10-24",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Mixed web/mobile/crypto exchange scope",
+    "languages": [],
+    "reward_max": 2000000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": 0,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [
+      "Third-party vendor or cloud issues unless caused by Crypto.com misconfiguration",
+      "Non-reproducible scanner-only submissions"
+    ],
+    "known_issues": [],
+    "prohibited_actions": [
+      "Testing outside current program scope"
+    ],
+    "submission_rules": [
+      "Specific reproducible vulnerability required",
+      "PoC required",
+      "Manual verification required"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "js-gated-policy-view",
+      "web2-mixed-scope",
+      "smart-contract-scope-not-clearly-confirmed"
+    ],
+    "scoring": 45,
+    "selection_reason": "Skipped by hard filter because smart-contract scope could not be clearly confirmed from accessible policy content.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git"
+    ]
+  }
+]
