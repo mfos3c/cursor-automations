@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-12"
 status: status/lead
-updated: "2026-06-12T00:00:46.933Z"
+updated: "2026-06-12T04:02:59.425Z"
 ---
 
 # Optimism — BB-Scan (2026-06-12)
@@ -25,7 +25,7 @@ updated: "2026-06-12T00:00:46.933Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-12T00:00:46.933Z` |
+| Triggered at (UTC) | `2026-06-12T04:02:59.425Z` |
 
 ## Daily pick source
 
@@ -56,7 +56,6 @@ Related prior-art notes present in workspace (different protocols):
 
 Optional fallback (`obsidian-web3`) results:
 - `search_notes` query (`optimism duplicate disputed bridge governance accounting`) returned `[]` (no note hits).
-- `list_directory` for `30-findings` returned `Directory not found`.
 - `get_vault_stats` failed with `ENOENT` for `/Users/mfosec/Documents/Obsidian Vaults/Web3-Security` (vault bridge not mounted in this runtime).
 
 ## Duplicate radar summary
