@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-13"
 status: status/lead
-updated: "2026-06-13T04:00:40.278Z"
+updated: "2026-06-13T08:01:33.384Z"
 ---
 
 # Optimism — BB-Scan (2026-06-13)
@@ -25,7 +25,7 @@ updated: "2026-06-13T04:00:40.278Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-13T04:00:40.278Z` |
+| Triggered at (UTC) | `2026-06-13T08:01:33.384Z` |
 
 ## Daily pick source
 
@@ -45,7 +45,7 @@ updated: "2026-06-13T04:00:40.278Z"
 Step 1 requires `web3-bbp-rag` MCP preflight (`pre_flight_review`, `search`, `find_similar_audits`) as a hard prerequisite.
 
 MCP discovery results for this run:
-- Pattern search (`web3-bbp-rag|web3.*rag|bbp|aikido`) returned no matches.
+- Pattern search (`web3-bbp-rag|web3.*rag|bbp.*rag`) returned no matches.
 - Full catalog contained only `obsidian-web3`.
 
 Because duplicate-risk triage is mandatory before clone/x-ray/solidity-auditor, this run stops before code scanning.
@@ -66,7 +66,7 @@ Related prior-art notes present in workspace (different protocols):
 - [[30-findings/dydx-atomic-resolution-float-170]]
 
 Optional fallback (`obsidian-web3`) results:
-- `search_notes` query (`optimism duplicate disputed bridge governance accounting`) returned `[]`.
+- `search_notes` query (`Optimism duplicate disputed finding bridge foot-gun cantina sherlock`) returned `[]`.
 
 ## Duplicate radar summary
 
