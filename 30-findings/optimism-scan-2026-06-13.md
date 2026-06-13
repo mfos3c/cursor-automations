@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-13"
 status: status/lead
-updated: "2026-06-13T12:02:19.754Z"
+updated: "2026-06-13T16:00:38.187Z"
 ---
 
 # Optimism — BB-Scan (2026-06-13)
@@ -25,7 +25,7 @@ updated: "2026-06-13T12:02:19.754Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-13T12:02:19.754Z` |
+| Triggered at (UTC) | `2026-06-13T16:00:38.187Z` |
 
 ## Daily pick source
 
@@ -71,7 +71,7 @@ Optional fallback (`obsidian-web3`) results:
 ## Duplicate radar summary
 
 - `web3-bbp-rag`: **unavailable** in current MCP catalog.
-- Workspace prior-art check found: [[30-findings/optimism-scan-2026-06-12]], [[30-findings/optimism-scan-2026-06-11]], [[30-findings/optimism-scan-2026-06-10]].
+- Workspace prior-art check found: [[30-findings/optimism-scan-2026-06-13]], [[30-findings/optimism-scan-2026-06-12]], [[30-findings/optimism-scan-2026-06-11]], [[30-findings/optimism-scan-2026-06-10]].
 - Duplicate radar is **inconclusive** because the mandatory RAG service is unavailable.
 
 ## OOS reminders from daily pick
