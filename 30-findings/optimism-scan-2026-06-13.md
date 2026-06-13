@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-13"
 status: status/lead
-updated: "2026-06-13T16:00:38.187Z"
+updated: "2026-06-13T20:00:21.771Z"
 ---
 
 # Optimism — BB-Scan (2026-06-13)
@@ -25,7 +25,7 @@ updated: "2026-06-13T16:00:38.187Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-13T16:00:38.187Z` |
+| Triggered at (UTC) | `2026-06-13T20:00:21.771Z` |
 
 ## Daily pick source
 
@@ -66,7 +66,7 @@ Related prior-art notes present in workspace (different protocols):
 - [[30-findings/dydx-atomic-resolution-float-170]]
 
 Optional fallback (`obsidian-web3`) results:
-- `search_notes` query (`Optimism duplicate disputed finding bridge foot-gun cantina sherlock`) returned `[]`.
+- `search_notes` query (`optimism status/duplicate status/disputed bridge replay withdrawal`) returned `[]`.
 
 ## Duplicate radar summary
 
