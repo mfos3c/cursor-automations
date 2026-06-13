@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-13"
 status: status/lead
-updated: "2026-06-13T00:02:01.689Z"
+updated: "2026-06-13T04:00:40.278Z"
 ---
 
 # Optimism — BB-Scan (2026-06-13)
@@ -25,7 +25,7 @@ updated: "2026-06-13T00:02:01.689Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-13T00:02:01.689Z` |
+| Triggered at (UTC) | `2026-06-13T04:00:40.278Z` |
 
 ## Daily pick source
 
@@ -38,11 +38,15 @@ updated: "2026-06-13T00:02:01.689Z"
   - `scope_url`: `https://immunefi.com/bug-bounty/optimism/scope/`
   - `repo_url`: `https://github.com/ethereum-optimism/optimism`
   - `chains`: `optimism`, `ethereum`
+  - `known_issues`: smart-contract + blockchain/DLT known-issues pages, bridge foot-gun classes, prior Sherlock/Cantina audit overlap risk
 
 ## Abort reason
 
 Step 1 requires `web3-bbp-rag` MCP preflight (`pre_flight_review`, `search`, `find_similar_audits`) as a hard prerequisite.
-Targeted MCP discovery returned: `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
+
+MCP discovery results for this run:
+- Pattern search (`web3-bbp-rag|web3.*rag|bbp|aikido`) returned no matches.
+- Full catalog contained only `obsidian-web3`.
 
 Because duplicate-risk triage is mandatory before clone/x-ray/solidity-auditor, this run stops before code scanning.
 
