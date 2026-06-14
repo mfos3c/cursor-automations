@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-14"
 status: status/lead
-updated: "2026-06-14T16:02:30.625Z"
+updated: "2026-06-14T20:02:54.820Z"
 ---
 
 # Optimism — BB-Scan (2026-06-14)
@@ -25,7 +25,7 @@ updated: "2026-06-14T16:02:30.625Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-14T16:02:30.625Z` |
+| Triggered at (UTC) | `2026-06-14T20:02:54.820Z` |
 
 ## Daily pick source
 
