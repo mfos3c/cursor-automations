@@ -10,7 +10,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-14"
 status: status/lead
-updated: "2026-06-14T00:00:32.202Z"
+updated: "2026-06-14T04:02:19.546Z"
 ---
 
 # Optimism — BB-Scan (2026-06-14)
@@ -25,7 +25,7 @@ updated: "2026-06-14T00:00:32.202Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory RAG preflight` |
-| Triggered at (UTC) | `2026-06-14T00:00:32.202Z` |
+| Triggered at (UTC) | `2026-06-14T04:02:19.546Z` |
 
 ## Daily pick source
 
@@ -45,7 +45,8 @@ updated: "2026-06-14T00:00:32.202Z"
 Step 1 requires `web3-bbp-rag` MCP preflight (`pre_flight_review`, `search`, `find_similar_audits`) as a hard prerequisite.
 
 MCP discovery results for this run:
-- Pattern search (`web3-bbp-rag|rag|web3`) returned no `web3-bbp-rag` server.
+- Pattern search (`web3|bbp|rag|obsidian`) returned only `obsidian-web3` server/tool matches.
+- Direct server lookup returned: `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
 - Full catalog contained only `obsidian-web3`.
 
 Because duplicate-risk triage is mandatory before clone/x-ray/solidity-auditor, this run stops before code scanning.
