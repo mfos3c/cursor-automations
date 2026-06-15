@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-15"
 status: status/skip
-updated: "2026-06-15T08:02:36.645Z"
+updated: "2026-06-15T12:02:48.608Z"
 ---
 
 # Optimism — BB-Scan (2026-06-15)
@@ -24,7 +24,7 @@ updated: "2026-06-15T08:02:36.645Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-15T08:02:36.645Z` |
+| Triggered at (UTC) | `2026-06-15T12:02:48.608Z` |
 
 ## Step 0 decision
 
@@ -53,6 +53,7 @@ updated: "2026-06-15T08:02:36.645Z"
 
 ## Execution notes
 
+- `web3-bbp-rag` MCP was checked in this environment and no matching MCP server/tools were available at run time.
 - `web3-bbp-rag` is mandatory for Step 1 preflight, but Step 1 was not reached because Step 0 verdict gate failed (`HOLD`).
 - Clone/scope, x-ray, and solidity-auditor phases were not executed.
 
