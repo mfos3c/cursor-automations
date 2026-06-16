@@ -1,0 +1,180 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Testing on mainnet or public testnet deployed code",
+      "Testing with pricing oracles or third-party smart contracts",
+      "Testing with third-party systems/applications/websites",
+      "Denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing/social engineering"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No testing on mainnet/public testnet deployed code",
+      "No testing with pricing oracles or third-party smart contracts",
+      "No testing with third-party systems/applications/websites",
+      "No denial-of-service or traffic abuse",
+      "No phishing/social engineering",
+      "No disclosure of unresolved findings"
+    ],
+    "submission_rules": [
+      "PoC is required for valid report handling",
+      "Submit through Immunefi with reproducible steps and impact proof",
+      "Keep report confidential until coordinated resolution",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts and explicitly listed scope assets",
+      "op-node",
+      "op-geth"
+    ],
+    "risk_flags": [
+      "stale_cache_source_previous_daily_pick",
+      "bright_data_fetch_401_immunefi",
+      "rules_confidence_degraded_due_live_fetch_failure"
+    ],
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ],
+    "scoring": 90,
+    "selection_reason": "Highest cached score after weight application (+30 recency, +25 reward, +20 no deposit, +15 SC scope). Live Bright Data fetch failed with HTTP 401 across all platforms; confidence downgraded and verdict set to HOLD.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Discovery blocked (Sherlock listing)",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties",
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_fetch_401_sherlock",
+      "listing_unavailable_no_normalization"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter: smart contract scope could not be verified because listing fetch failed (HTTP 401).",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "Discovery blocked (Cantina listing)",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "scope_url": "https://cantina.xyz/opportunities",
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_fetch_401_cantina",
+      "listing_unavailable_no_normalization"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter: smart contract scope could not be verified because listing fetch failed (HTTP 401).",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "Discovery blocked (HackenProof listing)",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "scope_url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "login_gated_platform",
+      "bright_data_fetch_401_hackenproof",
+      "listing_unavailable_no_normalization"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter: login-gated listing could not be fetched; smart contract scope not verifiable.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "Discovery blocked (HackerOne listing)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "scope_url": "https://hackerone.com/opportunities/all",
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_fetch_401_hackerone",
+      "listing_unavailable_no_normalization"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter: smart contract scope could not be verified because listing fetch failed (HTTP 401).",
+    "confidence": "low",
+    "verdict": "SKIP"
+  }
+]
