@@ -57,6 +57,25 @@ python -m scalpbot.main --close-all
 
 `./run.sh` aynı işi venv'i otomatik kurarak yapar.
 
+## Dashboard (web arayüzü)
+
+Kullanıcı dostu, otomatik yenilenen koyu temalı bir panel:
+
+```bash
+./dashboard.sh                      # http://127.0.0.1:8000
+./dashboard.sh --port 8080          # farklı port
+```
+
+Gösterdikleri:
+- **Portföy kartları:** bakiye, ROI, win-rate, toplam PnL, işlem sayısı
+- **Aktif sinyaller:** coin, yön (LONG yeşil / SHORT kırmızı), güven çubuğu, fiyat, AI kararı + gerekçe
+- **Açık pozisyonlar:** giriş / stop / hedef / marjin / kaldıraç
+- **Kapanan işlemler:** TP/SL sonucu ve PnL
+- **⟳ Tara** butonu paneli kapatmadan yeni tarama tetikler; "AI" rozeti MiniMax'ın açık/kapalı olduğunu gösterir.
+
+Panel 5 saniyede bir `data/signals.json` ve `data/state.json` dosyalarını okur; bu yüzden
+arka planda `./run.sh --loop` çalışırken panel canlı güncellenir.
+
 ## Ayarlar — `config.yaml`
 
 | Bölüm | Anahtar | Açıklama |

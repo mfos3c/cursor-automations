@@ -2,12 +2,44 @@
 from __future__ import annotations
 
 import csv
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 
 
 def _ts() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+
+
+def write_signals_json(report_dir: str | Path, decisions: list, stats: dict) -> Path:
+    """Dashboard'un okuyabilmesi icin sinyalleri ve portfoyu JSON olarak yazar."""
+    report_dir = Path(report_dir)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    path = report_dir / "signals.json"
+
+    rows = []
+    for d in sorted(decisions, key=lambda x: x.confidence, reverse=True):
+        rows.append({
+            "symbol": d.symbol,
+            "direction": d.direction,
+            "confidence": d.confidence,
+            "price": d.price,
+            "atr": d.atr,
+            "ai_direction": (d.ai.direction if d.ai and d.ai.ok else None),
+            "ai_reason": (d.ai.reason if d.ai and d.ai.ok else None),
+            "note": d.note,
+            "votes": d.votes,
+        })
+
+    payload = {
+        "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "scanned": len(decisions),
+        "active": sum(1 for d in decisions if d.direction != "NEUTRAL"),
+        "stats": stats,
+        "signals": rows,
+    }
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return path
 
 
 def print_signals(decisions: list, top: int = 20) -> None:

@@ -84,8 +84,9 @@ def run_once(cfg, *, no_ai: bool = False, verbose: bool = True) -> dict:
         reporter.print_trade_events(opened, closed_now)
         reporter.print_stats(stats)
 
-    reporter.write_markdown(_resolve(cfg.run.get("report_dir", "data")),
-                            decisions, trader.state, stats)
+    report_dir = _resolve(cfg.run.get("report_dir", "data"))
+    reporter.write_markdown(report_dir, decisions, trader.state, stats)
+    reporter.write_signals_json(report_dir, decisions, stats)
     return stats
 
 
