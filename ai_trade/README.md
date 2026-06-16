@@ -1,4 +1,4 @@
-# Scalp Bot — $1 altı Binance Futures sinyal + analiz botu
+# ai_trade — $1 altı Binance Futures sinyal + analiz botu
 
 15 dakikalık grafikte, fiyatı **1 USDT altındaki** Binance Futures coinlerini tarar;
 kapsamlı teknik indikatör seti **+ MiniMax M3 AI analizi** ile **LONG/SHORT** sinyali üretir
@@ -31,7 +31,7 @@ $1 altı coinleri tara ──► 15dk mumları çek ──► İNDİKATÖRLER �
 ## Kurulum
 
 ```bash
-cd scalp-bot
+cd ai_trade
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env        # MiniMax anahtarını gir (opsiyonel)

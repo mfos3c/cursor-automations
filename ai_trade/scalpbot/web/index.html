@@ -59,12 +59,24 @@
   .muted{color:var(--muted)} .mono{font-variant-numeric:tabular-nums}
   .err{background:rgba(248,81,73,.12);border:1px solid var(--red);color:#ffb4ae;
        padding:10px 14px;border-radius:8px;margin-bottom:16px;font-size:13px}
+  .grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:28px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .panel h3{margin:0 0 12px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .chart{width:100%;height:170px;display:block}
+  .wr-wrap{display:flex;align-items:center;gap:18px}
+  .donut{position:relative;width:104px;height:104px;border-radius:50%;flex:none;
+    background:conic-gradient(var(--green) calc(var(--p,0)*1%),var(--red) 0);display:grid;place-items:center}
+  .donut .hole{width:74px;height:74px;border-radius:50%;background:var(--panel);
+    display:grid;place-items:center;font-weight:700;font-size:20px}
+  .wr-leg div{margin:6px 0;font-size:13px}
+  .wr-leg .k{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:middle}
 </style>
 </head>
 <body>
 <header>
   <div>
-    <h1><span class="dot" id="livedot"></span> Scalp Bot</h1>
+    <h1><span class="dot" id="livedot"></span> ai_trade</h1>
     <div class="sub">$1 altı · 15dk · LONG/SHORT sinyal + $10 paper trading</div>
   </div>
   <div class="controls">
@@ -79,6 +91,24 @@
   <div id="errbox"></div>
 
   <div class="cards" id="cards"></div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Bakiye Eğrisi (equity)</h3>
+      <svg class="chart" id="equity" viewBox="0 0 600 170" preserveAspectRatio="none"></svg>
+    </div>
+    <div class="panel">
+      <h3>Başarı Oranı</h3>
+      <div class="wr-wrap">
+        <div class="donut" id="donut"><div class="hole" id="donutVal">0%</div></div>
+        <div class="wr-leg">
+          <div><span class="k" style="background:var(--green)"></span><b id="wrW">0</b> kazanç (TP)</div>
+          <div><span class="k" style="background:var(--red)"></span><b id="wrL">0</b> kayıp (SL)</div>
+          <div class="muted" id="wrTotal">0 işlem</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section>
     <h2>Aktif Sinyaller <span class="count" id="sigcount">0</span></h2>
@@ -113,6 +143,45 @@ function relTime(iso){
   if(s<60) return Math.round(s)+'sn önce';
   if(s<3600) return Math.round(s/60)+'dk önce';
   return Math.round(s/3600)+'sa önce';
+}
+
+function renderEquity(start, trades){
+  const svg=document.getElementById('equity');
+  const W=600,H=170,pad=8;
+  // baslangic bakiyesinden itibaren kumulatif egri
+  const pts=[start];
+  let bal=start;
+  trades.forEach(t=>{ bal+=t.pnl; pts.push(bal); });
+  if(pts.length<2){
+    svg.innerHTML=`<text x="${W/2}" y="${H/2}" fill="#8b949e" font-size="13" text-anchor="middle">Henüz işlem yok — kapanan işlemler burada birikecek</text>`;
+    return;
+  }
+  const min=Math.min(...pts), max=Math.max(...pts), rng=(max-min)||1;
+  const x=i=> pad + i*(W-2*pad)/(pts.length-1);
+  const y=v=> H-pad - (v-min)/rng*(H-2*pad);
+  const line=pts.map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const area=`${line} L${x(pts.length-1).toFixed(1)},${H-pad} L${pad},${H-pad} Z`;
+  const up = pts[pts.length-1]>=start;
+  const col = up?'#3fb950':'#f85149';
+  const base=y(start).toFixed(1);
+  svg.innerHTML=`
+    <defs><linearGradient id="eg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="${col}" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+    <line x1="${pad}" x2="${W-pad}" y1="${base}" y2="${base}" stroke="#30363d" stroke-dasharray="4 4"/>
+    <path d="${area}" fill="url(#eg)"/>
+    <path d="${line}" fill="none" stroke="${col}" stroke-width="2"/>`;
+}
+
+function renderWinRate(wins, losses){
+  const total=wins+losses;
+  const wr= total? wins/total*100 : 0;
+  const dn=document.getElementById('donut');
+  dn.style.setProperty('--p', wr.toFixed(1));
+  document.getElementById('donutVal').textContent=Math.round(wr)+'%';
+  document.getElementById('wrW').textContent=wins;
+  document.getElementById('wrL').textContent=losses;
+  document.getElementById('wrTotal').textContent=total+' işlem';
 }
 
 async function load(){
@@ -156,6 +225,11 @@ async function load(){
     <div class="card"><div class="label">İşlem</div>
       <div class="value">${st.total_trades ?? 0} <small>${sig.active??0} aktif sinyal</small></div></div>
   `;
+
+  // bakiye egrisi + basari orani
+  const allTrades=d.closed_trades||[];
+  renderEquity(st.start_balance ?? d.start_balance ?? 10, allTrades);
+  renderWinRate(st.wins ?? 0, st.losses ?? 0);
 
   // sinyaller
   const rows=(sig.signals||[]).filter(s=>s.direction!=='NEUTRAL');
