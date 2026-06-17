@@ -1,0 +1,79 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": 0,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems/applications/websites",
+      "Any denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing/social engineering"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No mainnet/public testnet testing",
+      "No pricing-oracle or third-party smart-contract testing",
+      "No third-party systems/apps/websites interaction testing",
+      "No denial-of-service or traffic abuse",
+      "No phishing/social engineering"
+    ],
+    "submission_rules": [
+      "PoC required for valid report handling",
+      "Submit through Immunefi with reproducible steps and impact proof",
+      "Keep report confidential until coordinated resolution",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts listed in program scope",
+      "Explicitly listed proxy implementations",
+      "Critical blockchain client services in program scope (op-node, op-geth)"
+    ],
+    "risk_flags": [
+      "bright_data_fetch_blocked:immunefi:401",
+      "bright_data_fetch_blocked:sherlock:401",
+      "bright_data_fetch_blocked:cantina:401",
+      "bright_data_fetch_blocked:hackenproof:401",
+      "bright_data_fetch_blocked:hackerone:401",
+      "hackenproof_login_gated",
+      "cached_program_data_used_due_to_live_fetch_failure"
+    ],
+    "scoring": 90,
+    "selection_reason": "Highest cached eligible smart-contract program after weights (+30 recency, +25 reward, +20 no deposit, +15 SC scope). Live Bright Data discovery returned HTTP 401 on all configured platforms, so confidence is low and verdict is HOLD.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  }
+]
