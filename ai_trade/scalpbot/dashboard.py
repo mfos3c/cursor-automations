@@ -39,9 +39,20 @@ def _read_json(path: Path) -> dict:
     return {}
 
 
+@app.after_request
+def _no_cache(resp):
+    """Tarayicinin eski HTML/JS'i onbellekten gostermesini engelle."""
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
+
+
 @app.route("/")
 def index():
-    return send_from_directory(_WEB, "index.html")
+    resp = send_from_directory(_WEB, "index.html")
+    resp.headers["Cache-Control"] = "no-store"
+    return resp
 
 
 @app.route("/api/state")
