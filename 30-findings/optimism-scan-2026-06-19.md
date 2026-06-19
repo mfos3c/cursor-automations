@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-19"
 status: status/skip
-updated: "2026-06-19T12:00:28.589Z"
+updated: "2026-06-19T16:02:57.791Z"
 ---
 
 # Optimism — BB-Scan (2026-06-19)
@@ -24,7 +24,7 @@ updated: "2026-06-19T12:00:28.589Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-19T12:00:28.589Z` |
+| Triggered at (UTC) | `2026-06-19T16:02:57.791Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -58,7 +58,7 @@ updated: "2026-06-19T12:00:28.589Z"
 - Direct lookup (`GetMcpTools` server: `web3-bbp-rag`) failed with `server not found`.
 - `web3-bbp-rag` is mandatory for Step 1 preflight, but Step 1 was not reached because Step 0 verdict gate failed (`HOLD`).
 - Clone/scope, x-ray, and solidity-auditor phases were not executed.
-- This run refreshed the same Step 0 outcome at `2026-06-19T12:00:28.589Z` (no net change in verdict/leads).
+- This run refreshed the same Step 0 outcome at `2026-06-19T16:02:57.791Z` (no net change in verdict/leads).
 
 ## Compliance note
 
