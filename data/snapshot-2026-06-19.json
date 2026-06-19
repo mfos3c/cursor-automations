@@ -1,0 +1,204 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "new_or_updated": false,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Testing on mainnet or public testnet deployed code",
+      "Testing with pricing oracles or third-party smart contracts",
+      "Testing with third-party systems/applications/websites",
+      "Denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing/social engineering"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Bridge foot-gun classes documented by Optimism",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No testing on mainnet/public testnet deployed code",
+      "No testing with pricing oracles or third-party smart contracts",
+      "No testing with third-party systems/applications/websites",
+      "No denial-of-service or traffic abuse",
+      "No phishing/social engineering or credential abuse",
+      "No disclosure of unresolved findings"
+    ],
+    "submission_rules": [
+      "PoC required for valid report handling",
+      "Submit via Immunefi with reproducible steps and impact proof",
+      "Keep report confidential until coordinated resolution",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts and explicitly listed scope assets",
+      "Critical blockchain client services in scope (op-node, op-geth)",
+      "Proxy implementations where the proxy asset itself is listed"
+    ],
+    "risk_flags": [
+      "bright_data_mcp_fetch_failed_401_all_platforms_2026-06-19",
+      "cached_program_details_used_due_fetch_failure",
+      "rules_may_be_stale_unconfirmed_today",
+      "sherlock_cantina_prior_audit_duplicate_risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Only smart-contract candidate available from cached data. Score breakdown: +25 reward>=50k, +20 no deposit, +15 SC in scope, +0 recency (>14d), +0 high-confidence rule parse (fresh fetch blocked).",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Platform listings unavailable (Bright Data 401)",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-06-19",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_mcp_fetch_failed_401"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped: could not fetch listing/details via required Bright Data MCP tool.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git"
+    ]
+  },
+  {
+    "program_name": "Platform listings unavailable (Bright Data 401)",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "scope_url": "https://cantina.xyz/opportunities",
+    "last_updated": "2026-06-19",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_mcp_fetch_failed_401",
+      "prior_audit_findings_duplicate_risk_unassessed"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped: could not fetch listing/details via required Bright Data MCP tool.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git"
+    ]
+  },
+  {
+    "program_name": "Platform listings unavailable (Bright Data 401)",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "scope_url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "last_updated": "2026-06-19",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 91,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_mcp_fetch_failed_401",
+      "login_gated_platform",
+      "hard_filter_reputation_above_user_profile"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped: listing is login-gated and Bright Data fetch failed; defaulted to hard-filtered non-eligible placeholder.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git"
+    ]
+  },
+  {
+    "program_name": "Platform listings unavailable (Bright Data 401)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "scope_url": "https://hackerone.com/opportunities/all",
+    "last_updated": "2026-06-19",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "bright_data_mcp_fetch_failed_401"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped: could not fetch listing/details via required Bright Data MCP tool.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git"
+    ]
+  }
+]
