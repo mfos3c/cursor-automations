@@ -71,6 +71,38 @@
     display:grid;place-items:center;font-weight:700;font-size:20px}
   .wr-leg div{margin:6px 0;font-size:13px}
   .wr-leg .k{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:middle}
+  /* arama + analiz */
+  .searchbar{display:flex;gap:10px;margin-bottom:12px}
+  .searchbar input{flex:1;background:var(--panel2);border:1px solid var(--border);color:var(--txt);
+    border-radius:8px;padding:11px 14px;font-size:14px;outline:none}
+  .searchbar input:focus{border-color:var(--accent)}
+  .quick{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .quick span{font-size:12px;padding:4px 11px;border:1px solid var(--border);border-radius:20px;
+    color:var(--muted);cursor:pointer;background:var(--panel)}
+  .quick span:hover{color:var(--txt);border-color:var(--accent)}
+  .analysis-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:6px}
+  .ac-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  .ac-head .sym{font-size:22px;font-weight:800}
+  .ac-head .px{font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .verdict{font-size:18px;font-weight:800;padding:6px 16px;border-radius:8px}
+  .ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+  .ind{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+  .ind .n{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+  .ind .v{font-size:15px;font-weight:600;margin-top:3px;font-variant-numeric:tabular-nums}
+  .ind .v small{font-size:11px;font-weight:500;color:var(--muted)}
+  .votes-wrap{margin:14px 0}
+  .vrow{display:grid;grid-template-columns:120px 1fr 46px;align-items:center;gap:10px;margin:5px 0;font-size:12px}
+  .vbar{height:8px;background:var(--panel2);border-radius:4px;position:relative}
+  .vbar i{position:absolute;top:0;bottom:0;width:2px;background:var(--muted);left:50%}
+  .vbar b{position:absolute;top:0;bottom:0;border-radius:4px;display:block}
+  .levels{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .lv{flex:1;min-width:120px;background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center}
+  .lv .n{font-size:11px;color:var(--muted)} .lv .v{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:3px}
+  .ai-box{background:rgba(31,111,235,.08);border:1px solid var(--accent);border-radius:8px;padding:12px 14px;margin-top:12px}
+  .ai-box .t{font-size:12px;color:var(--blue);font-weight:700;margin-bottom:4px}
+  .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);
+    border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+  @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -89,6 +121,17 @@
 
 <main>
   <div id="errbox"></div>
+
+  <section>
+    <h2>🔎 Coin Analizi</h2>
+    <div class="searchbar">
+      <input id="coinInput" placeholder="Coin sembolü yaz (örn. DOGE, ARB, 1000PEPE)" autocomplete="off"
+             onkeydown="if(event.key==='Enter')analyzeCoin()">
+      <button onclick="analyzeCoin()" id="analyzeBtn">Analiz Et</button>
+    </div>
+    <div class="quick" id="quickPicks"></div>
+    <div id="analysis"></div>
+  </section>
 
   <div class="cards" id="cards"></div>
 
@@ -184,6 +227,87 @@ function renderWinRate(wins, losses){
   document.getElementById('wrTotal').textContent=total+' işlem';
 }
 
+// ── Coin analizi (arama cubugu) ───────────────────────────────
+const VOTE_LABELS={ema_trend:'EMA trend',rsi:'RSI',macd:'MACD',bollinger:'Bollinger',
+  stochastic:'Stochastic',adx:'ADX/DI',volume:'Hacim'};
+
+function voteBar(v){
+  // v: -1..+1  -> ortadan saga yesil, sola kirmizi
+  const pct=Math.min(100,Math.abs(v)*50);
+  const col= v>0?'var(--green)': v<0?'var(--red)':'var(--muted)';
+  const style= v>=0? `left:50%;width:${pct}%;background:${col}` : `right:50%;width:${pct}%;background:${col}`;
+  return `<div class="vbar"><i></i><b style="${style}"></b></div>`;
+}
+
+function decideDigits(p){ return p>=100?2: p>=1?4:6; }
+
+async function analyzeCoin(sym){
+  const input=document.getElementById('coinInput');
+  const symbol=(typeof sym==='string'? sym : input.value).trim().toUpperCase();
+  if(!symbol){ input.focus(); return; }
+  input.value=symbol;
+  const btn=document.getElementById('analyzeBtn');
+  const out=document.getElementById('analysis');
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span>';
+  out.innerHTML='<div class="empty">'+symbol+' analiz ediliyor…</div>';
+  let r;
+  try{ r=await (await fetch('/api/analyze?symbol='+encodeURIComponent(symbol))).json(); }
+  catch(e){ r={ok:false,error:'Baglanti hatasi'}; }
+  btn.disabled=false; btn.textContent='Analiz Et';
+  if(!r.ok){ out.innerHTML='<div class="err">⚠ '+(r.error||'Analiz başarısız')+'</div>'; return; }
+  renderAnalysis(r,out);
+}
+
+function renderAnalysis(r,out){
+  const ind=r.indicators||{}; const dg=decideDigits(r.price);
+  const px=n=> n==null?'—':Number(n).toLocaleString('en-US',{minimumFractionDigits:dg,maximumFractionDigits:dg});
+  const verdictCol = r.direction==='LONG'?'var(--green)': r.direction==='SHORT'?'var(--red)':'var(--muted)';
+
+  const indGrid=[
+    ['RSI(14)', ind.rsi?.toFixed(1), ind.rsi>=70?'aşırı alım':ind.rsi<=30?'aşırı satım':'nötr'],
+    ['EMA 9/21/50', null, null, `${px(ind.ema9)} / ${px(ind.ema21)} / ${px(ind.ema50)}`],
+    ['MACD hist', ind.macd_hist?.toFixed(6), ind.macd_hist>=0?'pozitif':'negatif'],
+    ['Bollinger', null, null, `alt ${px(ind.bb_lower)} · üst ${px(ind.bb_upper)}`],
+    ['Stochastic K/D', null, null, `${ind.stoch_k?.toFixed(1)} / ${ind.stoch_d?.toFixed(1)}`],
+    ['ADX', ind.adx?.toFixed(1), ind.adx>=20?'trend güçlü':'trend zayıf'],
+    ['+DI / -DI', null, null, `${ind.plus_di?.toFixed(1)} / ${ind.minus_di?.toFixed(1)}`],
+    ['ATR(14)', px(ind.atr), 'volatilite'],
+    ['Hacim / ort.', null, null, `${Number(ind.volume).toLocaleString()} / ${Number(ind.vol_sma).toLocaleString()}`],
+  ].map(c=>`<div class="ind"><div class="n">${c[0]}</div>
+     <div class="v">${c[3]!=null?c[3]:(c[1]??'—')}${c[2]&&c[3]==null?` <small>${c[2]}</small>`:''}</div></div>`).join('');
+
+  const votes=Object.entries(r.votes||{}).map(([k,v])=>`
+    <div class="vrow"><span class="muted">${VOTE_LABELS[k]||k}</span>${voteBar(v)}
+      <span class="mono" style="text-align:right;color:${v>0?'var(--green)':v<0?'var(--red)':'var(--muted)'}">${v>0?'+':''}${v}</span></div>`).join('');
+
+  const L=r.levels||{};
+  const aiBox = r.ai_enabled
+    ? (r.ai
+        ? `<div class="ai-box"><div class="t">🤖 MiniMax M3 görüşü — <span class="badge ${r.ai.direction}">${r.ai.direction}</span> (${r.ai.confidence?.toFixed(0)}%)</div>${r.ai.reason||''}</div>`
+        : `<div class="ai-box"><div class="t">🤖 MiniMax M3</div><span class="muted">AI yanıtı alınamadı (kota/anahtar?).</span></div>`)
+    : `<div class="ai-box"><div class="t">🤖 MiniMax M3 kapalı</div><span class="muted">.env içinde MINIMAX_API_KEY tanımlarsan AI görüşü de burada görünür.</span></div>`;
+
+  out.innerHTML=`<div class="analysis-card">
+    <div class="ac-head">
+      <span class="sym">${r.symbol}</span>
+      <span class="px">${px(r.price)} · ${r.timeframe}</span>
+      <span class="verdict" style="background:${verdictCol}22;color:${verdictCol}">${r.direction} · %${r.confidence.toFixed(1)} güven</span>
+    </div>
+    ${r.note?`<div class="muted" style="margin-bottom:8px">ℹ ${r.note}</div>`:''}
+    <div class="ac-grid">${indGrid}</div>
+    <div class="votes-wrap"><h3 style="font-size:12px;color:var(--muted);margin:0 0 8px">İndikatör oyları (◄ short · long ►)</h3>${votes}</div>
+    ${aiBox}
+    <div class="levels">
+      <div class="lv"><div class="n">Önerilen Yön</div><div class="v" style="color:${verdictCol}">${L.direction}${L.indicative?' *':''}</div></div>
+      <div class="lv"><div class="n">Giriş</div><div class="v">${px(L.entry)}</div></div>
+      <div class="lv"><div class="n">Stop-Loss</div><div class="v neg">${px(L.stop_loss)}</div></div>
+      <div class="lv"><div class="n">Take-Profit</div><div class="v pos">${px(L.take_profit)}</div></div>
+      <div class="lv"><div class="n">R/R</div><div class="v">${L.risk_reward}</div></div>
+    </div>
+    ${L.indicative?'<div class="muted" style="margin-top:8px;font-size:12px">* Yön NEUTRAL — seviyeler yalnızca bilgilendirme amaçlı (eşik altı güven).</div>':''}
+  </div>`;
+}
+
 async function load(){
   let d;
   try{ d = await (await fetch('/api/state')).json(); }
@@ -230,6 +354,13 @@ async function load(){
   const allTrades=d.closed_trades||[];
   renderEquity(st.start_balance ?? d.start_balance ?? 10, allTrades);
   renderWinRate(st.wins ?? 0, st.losses ?? 0);
+
+  // hizli sec cipleri (aktif sinyaller)
+  const qp=document.getElementById('quickPicks');
+  const picks=(sig.signals||[]).slice(0,8);
+  qp.innerHTML = picks.length
+    ? 'Hızlı: '+picks.map(s=>`<span onclick="analyzeCoin('${s.symbol}')">${s.symbol}</span>`).join('')
+    : '';
 
   // sinyaller
   const rows=(sig.signals||[]).filter(s=>s.direction!=='NEUTRAL');

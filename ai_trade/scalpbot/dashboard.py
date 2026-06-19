@@ -5,10 +5,14 @@ import json
 import threading
 from pathlib import Path
 
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory
 
+from .analyzer import combine
+from .binance_client import BinanceFutures
 from .config import ROOT, load_config
 from .main import run_once
+from .minimax import MiniMaxClient
+from .strategy import evaluate
 
 app = Flask(__name__, static_folder=None)
 _CFG = load_config()
@@ -80,6 +84,83 @@ def api_scan():
     except Exception:
         _scan_lock.release()
         raise
+
+
+def _suggest_levels(direction: str, price: float, atr: float) -> dict:
+    """ATR tabanli onerilen giris/stop/hedef (paper_trader ile ayni mantik)."""
+    d = direction if direction in ("LONG", "SHORT") else "LONG"
+    sl_mult = float(_CFG.risk.get("atr_sl_mult", 1.5))
+    rr = float(_CFG.risk.get("risk_reward", 1.8))
+    dist = sl_mult * atr
+    if d == "LONG":
+        sl, tp = price - dist, price + dist * rr
+    else:
+        sl, tp = price + dist, price - dist * rr
+    return {
+        "direction": d,
+        "indicative": direction == "NEUTRAL",
+        "entry": price,
+        "stop_loss": sl,
+        "take_profit": tp,
+        "risk_reward": rr,
+    }
+
+
+@app.route("/api/analyze")
+def api_analyze():
+    """Tek bir coini anlik analiz et (arama cubugu)."""
+    quote = _CFG.market.get("quote_asset", "USDT")
+    symbol = request.args.get("symbol", "").strip().upper().replace(" ", "")
+    if not symbol:
+        return jsonify({"ok": False, "error": "Coin sembolu girin (orn. DOGE)"}), 400
+    if not symbol.endswith(quote):
+        symbol += quote
+
+    client = BinanceFutures(_CFG.binance_fapi_base)
+    try:
+        df = client.klines(
+            symbol,
+            _CFG.market.get("timeframe", "15m"),
+            int(_CFG.market.get("klines_limit", 200)),
+        )
+    except Exception as e:  # noqa: BLE001
+        return jsonify({"ok": False, "error": f"{symbol} verisi alinamadi: {e}"}), 502
+
+    ta = evaluate(symbol, df, _CFG.strategy)
+    if ta is None:
+        return jsonify({"ok": False, "error": f"{symbol} icin yeterli mum verisi yok"}), 422
+
+    ai_payload = None
+    ai_verdict = None
+    if _CFG.ai_enabled:
+        ai_verdict = MiniMaxClient(
+            _CFG.minimax_api_key, _CFG.minimax_base_url, _CFG.minimax_model
+        ).analyze(symbol, ta.snapshot, ta.direction)
+        if ai_verdict.ok:
+            ai_payload = {
+                "direction": ai_verdict.direction,
+                "confidence": ai_verdict.confidence,
+                "reason": ai_verdict.reason,
+            }
+
+    dec = combine(ta, ai_verdict, _CFG.strategy)
+
+    return jsonify({
+        "ok": True,
+        "symbol": symbol,
+        "timeframe": _CFG.market.get("timeframe", "15m"),
+        "price": ta.price,
+        "direction": dec.direction,
+        "confidence": dec.confidence,
+        "ta_direction": ta.direction,
+        "ta_score": ta.score,
+        "ai_enabled": _CFG.ai_enabled,
+        "ai": ai_payload,
+        "note": dec.note,
+        "votes": ta.votes,
+        "indicators": ta.snapshot,
+        "levels": _suggest_levels(dec.direction, ta.price, ta.atr),
+    })
 
 
 def main():
