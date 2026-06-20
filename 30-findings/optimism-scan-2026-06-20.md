@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-20"
 status: status/skip
-updated: "2026-06-20T08:00:11.280Z"
+updated: "2026-06-20T12:00:10.247Z"
 ---
 
 # Optimism — BB-Scan (2026-06-20)
@@ -24,7 +24,7 @@ updated: "2026-06-20T08:00:11.280Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-20T08:00:11.280Z` |
+| Triggered at (UTC) | `2026-06-20T12:00:10.247Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -58,7 +58,7 @@ updated: "2026-06-20T08:00:11.280Z"
 - Required config files were read: `config/scoring.yaml`, `config/chains.yaml`, `config/services.yaml`, `config/vault.yaml`.
 - MCP discovery for mandatory `web3-bbp-rag` was attempted via `GetMcpTools` pattern search (`web3-bbp-rag|web3|bbp|rag`) and catalog listing; only `obsidian-web3` was available.
 - Direct lookup (`GetMcpTools` server: `web3-bbp-rag`) failed with `server not found`.
-- This file was refreshed by the `2026-06-20T08:00:11.280Z` cron trigger (same date-level slug path).
+- This file was refreshed by the `2026-06-20T12:00:10.247Z` cron trigger (same date-level slug path).
 - Step 1 RAG preflight, clone/scope, x-ray, and solidity-auditor phases were not executed because Step 0 verdict gate failed (`HOLD`).
 
 ## Compliance note
