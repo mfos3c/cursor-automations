@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-23"
 status: status/skip
-updated: "2026-06-23T16:00:01.717Z"
+updated: "2026-06-23T20:02:25.902Z"
 ---
 
 # Optimism — BB-Scan (2026-06-23)
@@ -24,7 +24,7 @@ updated: "2026-06-23T16:00:01.717Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-23T16:00:01.717Z` |
+| Triggered at (UTC) | `2026-06-23T20:02:25.902Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -56,10 +56,10 @@ updated: "2026-06-23T16:00:01.717Z"
 
 - Required config files were read: `config/scoring.yaml`, `config/chains.yaml`, `config/services.yaml`, `config/vault.yaml`.
 - Mandatory MCP discovery was executed for `web3-bbp-rag`:
-  - `GetMcpTools(pattern="web3-bbp-rag|web3|bbp|rag")` returned only `obsidian-web3`.
-  - `GetMcpTools()` catalog returned only `obsidian-web3` as available in this environment.
+  - `GetMcpTools(server="web3-bbp-rag")` returned: server not found.
+  - `GetMcpTools(pattern="web3|bbp|rag")` returned only `obsidian-web3`.
 - `obsidian-web3` is optional fallback MCP; mandatory `web3-bbp-rag` is unavailable in this environment, so Step 1 preflight calls could not be executed.
-- This file was refreshed by the `2026-06-23T16:00:01.717Z` cron trigger (same date-level slug path).
+- This file was refreshed by the `2026-06-23T20:02:25.902Z` cron trigger (same date-level slug path).
 - Step 1 RAG preflight, clone/scope, x-ray, and solidity-auditor phases were not executed because Step 0 verdict gate failed (`HOLD`).
 
 ## Compliance note
