@@ -1,0 +1,166 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "new_or_updated": false,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems/applications/websites",
+      "Any denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing/social engineering"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate risk baseline"
+    ],
+    "prohibited_actions": [
+      "Mainnet/public testnet testing",
+      "DoS or high-volume automated traffic",
+      "Testing third-party systems/applications/websites",
+      "Pricing oracle and third-party smart-contract testing",
+      "Phishing/social engineering",
+      "Public disclosure before fix"
+    ],
+    "submission_rules": [
+      "PoC required for valid report handling",
+      "Submit through Immunefi with reproducible impact proof",
+      "Keep report confidential until coordinated resolution",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts explicitly listed in scope",
+      "Scoped OP Stack contract surfaces",
+      "Proxy implementations where proxy asset is listed"
+    ],
+    "risk_flags": [
+      "cached_program_data",
+      "bright_data_fetch_blocked_401",
+      "rules_may_be_stale",
+      "sherlock_cantina_prior_audit_duplicate_risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Top available smart-contract program from cached data. Score = +25 reward_max_gte_50k +20 no_deposit +15 smart_contract_in_scope; recency bonus not applied because last_updated is older than 14 days. Confidence is low because Bright Data platform and detail fetches returned HTTP 401.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Sherlock listing unavailable (Bright Data 401)",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "chains": [],
+    "reward_max": 0,
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "listing_fetch_blocked_401",
+      "platform_data_unavailable",
+      "sherlock_prior_audit_findings_duplicate_risk"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter applied because smart-contract scope could not be confirmed from blocked listing.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "Cantina listing unavailable (Bright Data 401)",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "chains": [],
+    "reward_max": 0,
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "listing_fetch_blocked_401",
+      "platform_data_unavailable",
+      "cantina_prior_audit_findings_duplicate_risk"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter applied because smart-contract scope could not be confirmed from blocked listing.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "HackenProof listing unavailable (login-gated + Bright Data 401)",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "chains": [],
+    "reward_max": 0,
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "login_gated",
+      "listing_fetch_blocked_401",
+      "platform_data_unavailable"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter applied because login-gated listing could not be parsed and smart-contract scope is unconfirmed.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "HackerOne listing unavailable (Bright Data 401)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "chains": [],
+    "reward_max": 0,
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "listing_fetch_blocked_401",
+      "platform_data_unavailable"
+    ],
+    "scoring": 0,
+    "selection_reason": "SKIP hard filter applied because smart-contract scope could not be confirmed from blocked listing.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  }
+]
