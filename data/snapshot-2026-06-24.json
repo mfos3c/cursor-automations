@@ -1,0 +1,77 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-04",
+    "published_at": "2024-02-22",
+    "new_or_updated": false,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems/applications/websites",
+      "Any denial-of-service or high-volume automated traffic",
+      "Public disclosure of unpatched vulnerabilities",
+      "Impacts requiring phishing/social engineering"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No mainnet/public testnet testing",
+      "No denial-of-service or high-volume traffic abuse",
+      "No third-party system testing",
+      "No phishing/social engineering"
+    ],
+    "submission_rules": [
+      "PoC is required for valid report handling",
+      "Submit through Immunefi only with reproducible steps and impact proof",
+      "Keep report confidential until coordinated resolution",
+      "KYC required for payout processing"
+    ],
+    "in_scope_contracts": [
+      "Optimism smart contracts and explicitly listed scope assets",
+      "Critical blockchain client services in scope per program statement"
+    ],
+    "risk_flags": [
+      "brightdata_auth_error_401_immunefi",
+      "brightdata_auth_error_401_sherlock",
+      "brightdata_auth_error_401_cantina",
+      "brightdata_auth_error_401_hackenproof",
+      "brightdata_auth_error_401_hackerone",
+      "cached_source_used",
+      "stale_program_metadata_possible"
+    ],
+    "scoring": 60,
+    "selection_reason": "Highest cached eligible smart-contract candidate after weighted scoring (+25 reward>=50k, +20 no deposit, +15 smart-contract scope); recency bonus unavailable and confidence reduced because all configured Bright Data platform fetches returned 401 today.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  }
+]
