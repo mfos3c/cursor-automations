@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-24"
 status: status/skip
-updated: "2026-06-24T12:00:14.648Z"
+updated: "2026-06-24T16:00:44.990Z"
 ---
 
 # Optimism — BB-Scan (2026-06-24)
@@ -24,7 +24,7 @@ updated: "2026-06-24T12:00:14.648Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-24T12:00:14.648Z` |
+| Triggered at (UTC) | `2026-06-24T16:00:44.990Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -56,8 +56,9 @@ updated: "2026-06-24T12:00:14.648Z"
 
 - Required config files were read: `config/scoring.yaml`, `config/chains.yaml`, `config/services.yaml`, `config/vault.yaml`.
 - Mandatory MCP discovery was executed for `web3-bbp-rag`:
-  - `GetMcpTools(server="web3-bbp-rag")` returned: server not found.
-  - `GetMcpTools(pattern="web3-bbp-rag|bbp|rag")` returned no matches.
+  - `GetMcpTools(server="web3-bbp-rag")` returned: `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
+  - `GetMcpTools(pattern="web3-bbp-rag")` returned no matches.
+  - `GetMcpTools(pattern="web3|bbp|rag")` returned only `obsidian-web3`.
   - MCP catalog check showed only `obsidian-web3` as available.
 - `obsidian-web3` is optional fallback MCP; mandatory `web3-bbp-rag` is unavailable in this environment.
 - Step 1 RAG preflight, clone/scope, x-ray, and solidity-auditor phases were not executed because Step 0 verdict gate failed (`HOLD`).
