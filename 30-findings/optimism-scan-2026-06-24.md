@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-24"
 status: status/skip
-updated: "2026-06-24T04:01:01.716Z"
+updated: "2026-06-24T08:00:39.294Z"
 ---
 
 # Optimism — BB-Scan (2026-06-24)
@@ -24,14 +24,13 @@ updated: "2026-06-24T04:01:01.716Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-24T04:01:01.716Z` |
+| Triggered at (UTC) | `2026-06-24T08:00:39.294Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's file `[[20-bounties/daily-pick-2026-06-24]]` was not present in git workspace.
-- Fallback rule applied: loaded most recent daily pick `[[20-bounties/daily-pick-2026-06-23]]`.
-- Parsed daily-pick verdict: `HOLD`
+- Loaded today's daily pick `[[20-bounties/daily-pick-2026-06-24]]` from git workspace.
+- Parsed daily-pick verdict from frontmatter: `HOLD`
 - Rule applied from `automations/bb-scan-prompt.md` Step 0:
   - If `verdict` frontmatter is not `GO`, stop scan with `SKIP | reason: {verdict}`.
 - Skip reason: `HOLD`
@@ -58,7 +57,8 @@ updated: "2026-06-24T04:01:01.716Z"
 - Required config files were read: `config/scoring.yaml`, `config/chains.yaml`, `config/services.yaml`, `config/vault.yaml`.
 - Mandatory MCP discovery was executed for `web3-bbp-rag`:
   - `GetMcpTools(server="web3-bbp-rag")` returned: server not found.
-  - `GetMcpTools(pattern="web3|bbp|rag")` returned only `obsidian-web3`.
+  - `GetMcpTools(pattern="web3-bbp-rag|bbp|rag")` returned no matches.
+  - MCP catalog check showed only `obsidian-web3` as available.
 - `obsidian-web3` is optional fallback MCP; mandatory `web3-bbp-rag` is unavailable in this environment.
 - Step 1 RAG preflight, clone/scope, x-ray, and solidity-auditor phases were not executed because Step 0 verdict gate failed (`HOLD`).
 
