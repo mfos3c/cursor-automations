@@ -1,0 +1,247 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-21",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + critical blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems and applications/websites",
+      "Denial-of-service, high-volume automated traffic, or spam",
+      "Phishing or social engineering against users/employees",
+      "Public disclosure of unpatched vulnerabilities"
+    ],
+    "known_issues": [
+      "Known issues Smart Contract (updated 2025-06-12)",
+      "Known issues Blockchain/DLT (updated 2025-06-12)",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No testing on mainnet/public testnet deployed code",
+      "No testing with third-party smart contracts or pricing oracles",
+      "No third-party systems/applications/websites testing",
+      "No DoS or significant automated traffic generation",
+      "No phishing/social engineering"
+    ],
+    "submission_rules": [
+      "PoC is required for all severities",
+      "KYC is required for payout processing",
+      "Submit through Immunefi with reproducible impact"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger",
+      "PermissionedDisputeGame",
+      "op-dispute-mon"
+    ],
+    "risk_flags": [
+      "Program also includes web/app and blockchain assets; keep BB-Scan focused on in-scope smart contracts",
+      "Bright Data MCP unavailable (HTTP 401), used fallback web fetch/search for this run"
+    ],
+    "scoring": 100,
+    "selection_reason": "Highest score with high-confidence smart-contract scope, clear out-of-scope/prohibited rules, and updated within 14 days.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Flying Tulip",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/248",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/248",
+    "last_updated": "2026-06-18",
+    "published_at": "2026-06-18",
+    "new_or_updated": true,
+    "chains": [],
+    "stack": "Smart contracts (scope details partially gated)",
+    "languages": [],
+    "reward_max": 1000000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Prior Sherlock contest findings may create duplicate risk"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Submit through Sherlock bug bounty dashboard"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Out-of-scope and known-issues detail not publicly extractable from the listing/detail page",
+      "Low-confidence due to missing public ruleset"
+    ],
+    "scoring": 90,
+    "selection_reason": "Very high bounty and recent update, but ruleset completeness is too limited for GO confidence.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "scope_url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "repo_url": "https://github.com/Uniswap",
+    "last_updated": "2024-11-26",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "unichain"
+    ],
+    "stack": "EVM smart contracts + web application + infrastructure",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 50,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Gas optimization suggestions without security impact",
+      "Theoretical vulnerabilities with no practical exploit path",
+      "Issues in third-party protocols not caused by Uniswap code",
+      "Admin-key-compromise assumptions unless vuln enables compromise"
+    ],
+    "known_issues": [
+      "Duplicate of previously reported/documented findings is ineligible",
+      "Sherlock/Cantina prior audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No unauthorized testing on mainnet/public testnet",
+      "No testing against live hosted services",
+      "No public disclosure without written permission",
+      "No exploitation/data exfiltration/social engineering"
+    ],
+    "submission_rules": [
+      "Functional PoC is required",
+      "Include clear impact quantification and affected contracts/functions",
+      "Submit directly via Spearbit/Cantina platform"
+    ],
+    "in_scope_contracts": [
+      "Uniswap v4 Core",
+      "Other Uniswap contracts (v2/v3/v4 components)",
+      "Unichain Contracts (L1)",
+      "Selected web/infrastructure assets"
+    ],
+    "risk_flags": [
+      "Program includes non-smart-contract assets; keep scope narrowed during BB-Scan"
+    ],
+    "scoring": 60,
+    "selection_reason": "Strong rewards and clear rules with deposit <= user max, but stale recency reduced final rank.",
+    "confidence": "high",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "Cronos Smart Contracts",
+    "platform": "hackenproof",
+    "url": "https://hackenproof.com/programs/cronos-smart-contracts",
+    "scope_url": "https://hackenproof.com/programs/cronos-smart-contracts",
+    "new_or_updated": false,
+    "chains": [
+      "cronos"
+    ],
+    "stack": "EVM smart contracts and dApps on Cronos",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 250000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "reputation_requirement": 50,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Attacks relying on social engineering or leaked credentials",
+      "Known previously awarded/known vulnerabilities",
+      "Vulnerabilities in non-production/development-only code",
+      "DoS/DDoS/spam and non-security best-practice critiques"
+    ],
+    "known_issues": [
+      "Previously known attack vectors/vulnerabilities are not eligible",
+      "Known vulnerabilities on upstream Ethereum/cosmos stacks are excluded"
+    ],
+    "prohibited_actions": [
+      "No mainnet/public-testnet testing; use private testnets",
+      "No testing with third-party systems/apps/websites",
+      "No phishing/social engineering/traffic abuse",
+      "No public disclosure without authorization"
+    ],
+    "submission_rules": [
+      "PoC required",
+      "Report within 24 hours of discovery via HackenProof only",
+      "KYC required for payouts"
+    ],
+    "in_scope_contracts": [
+      "Latest mainnet release contracts listed in program scope (VVS/Tectonic/Fulcrom/etc.)"
+    ],
+    "risk_flags": [
+      "Dashboard listing URL is login-gated; details sourced from public program page",
+      "Cronos chain is not mapped in config/chains.yaml and may need manual RPC mapping for BB-Scan"
+    ],
+    "scoring": 70,
+    "selection_reason": "Solid reward and clear SC scope/rules, but recency unavailable and not top-ranked today.",
+    "confidence": "high",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "HackerOne opportunities listing (smart-contract scope not extractable)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "scope_url": "https://hackerone.com/opportunities/all",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Public page content is client-side/session-gated in this environment",
+      "No verifiable smart-contract scope found from accessible listing content"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped by hard filter because smart-contract scope could not be verified.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  }
+]
