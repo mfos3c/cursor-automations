@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-25"
 status: status/aborted
-updated: "2026-06-25T08:02:17.989Z"
+updated: "2026-06-25T12:00:51.312Z"
 ---
 
 # Optimism — BB-Scan (2026-06-25)
@@ -24,7 +24,7 @@ updated: "2026-06-25T08:02:17.989Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-25T08:02:17.989Z` |
+| Triggered at (UTC) | `2026-06-25T12:00:51.312Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -45,7 +45,7 @@ updated: "2026-06-25T08:02:17.989Z"
 
 Step 1 in `automations/bb-scan-prompt.md` requires `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
 
-In this runtime, MCP discovery returned only `obsidian-web3`; `web3-bbp-rag` was not available, so mandatory RAG preflight could not be executed.  
+In this runtime, MCP discovery returned only `obsidian-web3`; `web3-bbp-rag` was not available, so mandatory RAG preflight could not be executed.
 Per runbook requirement ("mandatory"), scan was aborted before producing any LEAD from x-ray/solidity-auditor.
 
 ## Prior-art links (workspace)
@@ -68,7 +68,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker).
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-25T12:00:51.312Z`).
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `optimism status/duplicate status/disputed bridge replay withdrawal dispute output-finalization`
   - Result: `[]`
