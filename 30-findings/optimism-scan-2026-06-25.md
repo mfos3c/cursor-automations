@@ -3,13 +3,13 @@ title: "Optimism Scan 2026-06-25"
 tags:
   - web3/finding
   - web3/bounty
-  - status/skip
-verdict: SKIP
+  - status/aborted
+verdict: ABORT
 platform: immunefi
 protocol: optimism
 date: "2026-06-25"
-status: status/skip
-updated: "2026-06-25T04:02:59.107Z"
+status: status/aborted
+updated: "2026-06-25T08:02:17.989Z"
 ---
 
 # Optimism — BB-Scan (2026-06-25)
@@ -21,20 +21,17 @@ updated: "2026-06-25T04:02:59.107Z"
 | Protocol | `optimism` |
 | Platform | `immunefi` |
 | Repo URL | `https://github.com/ethereum-optimism/optimism` |
-| Verdict | `SKIP` |
+| Verdict | `ABORT` |
 | Leads | `0` |
-| Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-25T04:02:59.107Z` |
+| Run status | `blocked at mandatory Step 1 RAG preflight` |
+| Triggered at (UTC) | `2026-06-25T08:02:17.989Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's expected pick file `[[20-bounties/daily-pick-2026-06-25]]` was not present in git.
-- Per runbook fallback rule, loaded most recent file: `[[20-bounties/daily-pick-2026-06-24]]`.
-- Parsed daily-pick verdict from frontmatter: `HOLD`
-- Rule applied from `automations/bb-scan-prompt.md` Step 0:
-  - If `verdict` frontmatter is not `GO`, stop scan with `SKIP | reason: {verdict}`.
-- Skip reason: `HOLD`
+- Loaded today's daily pick from git workspace: `[[20-bounties/daily-pick-2026-06-25]]`.
+- Parsed daily-pick verdict from frontmatter: `GO`.
+- Step 0 gate passed.
 
 ## Parsed daily-pick context
 
@@ -43,6 +40,39 @@ updated: "2026-06-25T04:02:59.107Z"
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
 - `known_issues`: Smart Contract + Blockchain/DLT known-issues pages (updated 2025-06-12), plus prior Sherlock/Cantina duplicate-risk baseline.
+
+## Abort reason
+
+Step 1 in `automations/bb-scan-prompt.md` requires `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
+
+In this runtime, MCP discovery returned only `obsidian-web3`; `web3-bbp-rag` was not available, so mandatory RAG preflight could not be executed.  
+Per runbook requirement ("mandatory"), scan was aborted before producing any LEAD from x-ray/solidity-auditor.
+
+## Prior-art links (workspace)
+
+- [[30-findings/optimism-scan-2026-06-24]]
+- [[30-findings/optimism-scan-2026-06-23]]
+- [[30-findings/optimism-scan-2026-06-22]]
+- [[30-findings/optimism-scan-2026-06-21]]
+- [[30-findings/optimism-scan-2026-06-20]]
+- [[30-findings/optimism-scan-2026-06-19]]
+- [[30-findings/optimism-scan-2026-06-18]]
+- [[30-findings/optimism-scan-2026-06-17]]
+- [[30-findings/optimism-scan-2026-06-16]]
+- [[30-findings/optimism-scan-2026-06-15]]
+- [[30-findings/optimism-scan-2026-06-14]]
+- [[30-findings/optimism-scan-2026-06-13]]
+- [[30-findings/optimism-scan-2026-06-12]]
+- [[30-findings/optimism-scan-2026-06-11]]
+- [[30-findings/optimism-scan-2026-06-10]]
+
+## Duplicate radar summary
+
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker).
+- Optional fallback (`obsidian-web3 search_notes`) query:
+  - `optimism status/duplicate status/disputed bridge replay withdrawal dispute output-finalization`
+  - Result: `[]`
+- Local `30-findings/` scan confirms prior Optimism scan notes exist, but no same-day duplicate/disputed bug-class determination is possible without mandatory RAG preflight.
 
 ## OOS reminders from daily pick
 
@@ -53,16 +83,13 @@ updated: "2026-06-25T04:02:59.107Z"
 - No public disclosure of unpatched vulnerabilities.
 - No phishing/social engineering dependent impacts.
 
-## Execution notes
+## x-ray LEAD list
 
-- Required config files were read: `config/scoring.yaml`, `config/chains.yaml`, `config/services.yaml`, `config/vault.yaml`.
-- Mandatory MCP discovery was executed for `web3-bbp-rag`:
-  - `GetMcpTools(server="web3-bbp-rag")` returned: `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
-  - `GetMcpTools(pattern="web3-bbp-rag")` returned no matches.
-  - `GetMcpTools(pattern="web3|rag")` returned only `obsidian-web3`.
-- Optional fallback MCP check executed with `obsidian-web3 search_notes` for `optimism duplicate finding` in `30-findings`; result set was empty.
-- Git history scan of `30-findings` confirmed prior Optimism scan notes already exist for recent dates.
-- Step 1 RAG preflight, clone/scope, x-ray, and solidity-auditor phases were not executed because Step 0 verdict gate failed (`HOLD`).
+Not executed because mandatory Step 1 RAG preflight was unavailable.
+
+## solidity-auditor findings
+
+Not executed because mandatory Step 1 RAG preflight was unavailable.
 
 ## Compliance note
 
