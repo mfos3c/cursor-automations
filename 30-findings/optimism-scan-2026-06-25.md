@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-25"
 status: status/skip
-updated: "2026-06-25T00:02:55.504Z"
+updated: "2026-06-25T04:02:59.107Z"
 ---
 
 # Optimism — BB-Scan (2026-06-25)
@@ -24,7 +24,7 @@ updated: "2026-06-25T00:02:55.504Z"
 | Verdict | `SKIP` |
 | Leads | `0` |
 | Run status | `stopped at Step 0 gate` |
-| Triggered at (UTC) | `2026-06-25T00:02:55.504Z` |
+| Triggered at (UTC) | `2026-06-25T04:02:59.107Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
