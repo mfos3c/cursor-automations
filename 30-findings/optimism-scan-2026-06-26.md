@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-26"
 status: status/aborted
-updated: "2026-06-26T04:02:35.700Z"
+updated: "2026-06-26T08:02:23.264Z"
 ---
 
 # Optimism - BB-Scan (2026-06-26)
@@ -24,13 +24,12 @@ updated: "2026-06-26T04:02:35.700Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-26T04:02:35.700Z` |
+| Triggered at (UTC) | `2026-06-26T08:02:23.264Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's daily pick file `20-bounties/daily-pick-2026-06-26.md` was missing in git workspace.
-- Loaded most recent fallback daily pick: `[[20-bounties/daily-pick-2026-06-25]]`.
+- Loaded today's daily pick from git workspace: `[[20-bounties/daily-pick-2026-06-26]]`.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
@@ -51,7 +50,6 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Prior-art links (workspace)
 
-- [[30-findings/optimism-scan-2026-06-25]]
 - [[30-findings/optimism-scan-2026-06-24]]
 - [[30-findings/optimism-scan-2026-06-23]]
 - [[30-findings/optimism-scan-2026-06-22]]
@@ -67,10 +65,11 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 - [[30-findings/optimism-scan-2026-06-12]]
 - [[30-findings/optimism-scan-2026-06-11]]
 - [[30-findings/optimism-scan-2026-06-10]]
+- [[30-findings/optimism-scan-2026-06-25]]
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T04:02:35.700Z`).
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T08:02:23.264Z`).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `optimism status/duplicate status/disputed bridge replay withdrawal dispute output-finalization`
