@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-26"
 status: status/aborted
-updated: "2026-06-26T16:02:17.041Z"
+updated: "2026-06-26T20:01:56.793Z"
 ---
 
 # Optimism - BB-Scan (2026-06-26)
@@ -24,7 +24,8 @@ updated: "2026-06-26T16:02:17.041Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-26T16:02:17.041Z` |
+| Triggered at (UTC) | `2026-06-26T20:01:56.793Z` |
+| Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -39,7 +40,8 @@ updated: "2026-06-26T16:02:17.041Z"
 - `scope_url`: `https://immunefi.com/bug-bounty/optimism/scope/`
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
-- `known_issues`: Smart Contract + Blockchain/DLT known-issues pages (updated 2025-06-12), plus prior Sherlock/Cantina duplicate-risk baseline.
+- `out_of_scope`: exposed operator API issues, chain-operator best-practice issues, known upstream devp2p issues, mainnet/public-testnet testing, pricing-oracle and third-party system testing.
+- `known_issues`: dispute-game reordering/bond-loss scenario, known op-challenger class, bridge token misconfiguration foot-guns, OptimismPortal stranded ETH edge case, prior Sherlock/Cantina findings as duplicate-risk baseline.
 
 ## Abort reason
 
@@ -69,7 +71,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T16:02:17.041Z`).
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T20:01:56.793Z`).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `optimism status/duplicate status/disputed bridge replay withdrawal dispute output-finalization`
