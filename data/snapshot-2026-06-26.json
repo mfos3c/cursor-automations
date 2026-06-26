@@ -1,0 +1,276 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-26",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + blockchain client components",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": null,
+    "kyc_required": true,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Vulnerabilities requiring publicly exposed operator APIs",
+      "Operator best-practice violations and Alt-DA feature scope",
+      "Known devp2p upstream issues already documented",
+      "Testing on mainnet/public testnet deployed code",
+      "Testing with pricing oracles or third-party smart contracts",
+      "Testing with third-party systems/applications/websites"
+    ],
+    "known_issues": [
+      "Dispute game reorder/bond-loss scenario under predictable L1 reorg",
+      "Known op-challenger incorrect resolution class detected by op-dispute-mon",
+      "Bridge token misconfiguration foot-guns (OptimismMintable, rebasing, fee-on-transfer)",
+      "OptimismPortal stranded ETH edge case for contract-origin deposits"
+    ],
+    "prohibited_actions": [
+      "No testing on mainnet/public testnet",
+      "No phishing or social engineering",
+      "No third-party systems/applications testing",
+      "No denial of service or high-volume automated traffic",
+      "No public disclosure of unpatched issues"
+    ],
+    "submission_rules": [
+      "PoC required for all severities",
+      "KYC required for payout processing",
+      "Use Immunefi coordinated disclosure policy"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger"
+    ],
+    "risk_flags": [
+      "Prior Sherlock/Cantina audit findings should be treated as duplicate-risk baseline"
+    ],
+    "scoring": 100,
+    "selection_reason": "Top score with high-confidence parsed rules: updated within 14 days, reward >= $50k, no deposit, explicit smart-contract scope, and clear out-of-scope/known-issues/prohibited-actions.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Aave V4",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "repo_url": null,
+    "last_updated": "2026-05-18",
+    "published_at": "2026-05-18",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "EVM smart contracts",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 2500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 250,
+    "kyc_required": null,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "High/Critical submissions require 250 USDC stake",
+      "Stake is returned for valid reports and forfeited for invalid reports"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Deposit amount exceeds profile hard limit ($100)",
+      "Out-of-scope and known-issues details not clearly accessible"
+    ],
+    "scoring": 40,
+    "selection_reason": "High reward and smart-contract scope, but hard-filtered due to 250 USDC required deposit above configured maximum.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": []
+  },
+  {
+    "program_name": "Uniswap Labs",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities/bounties",
+    "scope_url": "https://cantina.xyz/opportunities/bounties",
+    "repo_url": null,
+    "last_updated": null,
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Smart contract bug bounty",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": null,
+    "kyc_required": null,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Program marked live on Cantina opportunities page",
+      "Deposit required, exact amount not visible from public listing"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Deposit amount unavailable; hard-filter cannot be conclusively evaluated",
+      "Out-of-scope and known-issues details unclear from listing-only access"
+    ],
+    "scoring": 40,
+    "selection_reason": "Strong reward ceiling but insufficient rule clarity from listing-level data; held for manual rules verification.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": []
+  },
+  {
+    "program_name": "Reserve Protocol Bug Bounty",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities/bounties",
+    "scope_url": "https://cantina.xyz/opportunities/bounties",
+    "repo_url": null,
+    "last_updated": null,
+    "published_at": "2026-03-26",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Smart contract bug bounty",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 10000000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": null,
+    "kyc_required": null,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Program marked live on Cantina opportunities page",
+      "Deposit required, exact amount not visible from public listing"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Deposit amount unavailable; hard-filter cannot be conclusively evaluated",
+      "Out-of-scope and known-issues details unclear from listing-only access"
+    ],
+    "scoring": 40,
+    "selection_reason": "High max payout but rule ambiguity keeps confidence low and verdict at HOLD.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": []
+  },
+  {
+    "program_name": "NEAR Smart Contracts",
+    "platform": "hackenproof",
+    "url": "https://hackenproof.com/programs/near-smart-contracts-1",
+    "scope_url": "https://hackenproof.com/programs/near-smart-contracts-1",
+    "repo_url": null,
+    "last_updated": null,
+    "published_at": null,
+    "new_or_updated": false,
+    "chains": [
+      "near"
+    ],
+    "stack": "Smart contracts on NEAR (WASM)",
+    "languages": [
+      "Rust",
+      "JavaScript"
+    ],
+    "reward_max": 300000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 5,
+    "kyc_required": true,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Issues outside scoped NEAR smart-contract targets"
+    ],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "PoC required",
+      "KYC required",
+      "Submission fee: $5",
+      "Report within 24h and only through HackenProof"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "HackenProof listing is login-gated in this environment",
+      "Detail extraction based on search snippets; full policy page could not be fetched directly"
+    ],
+    "scoring": 50,
+    "selection_reason": "Deposit is within threshold and SC scope is explicit, but confidence remains low due partial access and unclear known-issues/out-of-scope completeness.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": []
+  },
+  {
+    "program_name": "Chainlink",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/chainlink",
+    "scope_url": "https://hackerone.com/chainlink/policy_scopes",
+    "repo_url": null,
+    "last_updated": null,
+    "published_at": null,
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Mixed platform scope (not confirmed smart-contract-specific)",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "deposit_amount": null,
+    "kyc_required": null,
+    "reputation_requirement": null,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Public opportunities index indicates $50 minimum bounty"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "Policy page inaccessible in this environment",
+      "Smart-contract scope could not be confirmed from public text extract"
+    ],
+    "scoring": 20,
+    "selection_reason": "Skipped by hard filter because smart-contract scope could not be confirmed and appears mixed/general-security.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": []
+  }
+]
