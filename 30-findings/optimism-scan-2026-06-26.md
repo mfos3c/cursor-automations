@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-26"
 status: status/aborted
-updated: "2026-06-26T08:02:23.264Z"
+updated: "2026-06-26T16:02:17.041Z"
 ---
 
 # Optimism - BB-Scan (2026-06-26)
@@ -24,7 +24,7 @@ updated: "2026-06-26T08:02:23.264Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-26T08:02:23.264Z` |
+| Triggered at (UTC) | `2026-06-26T16:02:17.041Z` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
@@ -69,12 +69,13 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T08:02:23.264Z`).
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-26T16:02:17.041Z`).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: obsidian-web3`.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `optimism status/duplicate status/disputed bridge replay withdrawal dispute output-finalization`
   - Result: `[]`
-- Local `30-findings/` scan confirms prior Optimism scan notes exist, but no same-day duplicate/disputed bug-class determination is possible without mandatory RAG preflight.
+- Local `30-findings/` scan confirms prior Optimism scan notes exist and no explicit `status/duplicate` or `status/disputed` markers were found in the Optimism scan note set.
+- Same-day duplicate/disputed bug-class determination still cannot be completed without mandatory RAG preflight support.
 
 ## OOS reminders from daily pick
 
