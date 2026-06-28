@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-28"
 status: status/aborted
-updated: "2026-06-28T12:00:33.375Z"
+updated: "2026-06-28T16:02:12.405Z"
 ---
 
 # Optimism - BB-Scan (2026-06-28)
@@ -24,7 +24,7 @@ updated: "2026-06-28T12:00:33.375Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-28T12:00:33.375Z` |
+| Triggered at (UTC) | `2026-06-28T16:02:12.405Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -74,7 +74,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-28T12:00:33.375Z`).
+- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker; rechecked at `2026-06-28T16:02:12.405Z`).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
 - Pattern lookup evidence: `GetMcpTools(pattern="web3-bbp-rag|rag|bbp")` returned no matches.
 - Optional fallback (`obsidian-web3 search_notes`) query:
