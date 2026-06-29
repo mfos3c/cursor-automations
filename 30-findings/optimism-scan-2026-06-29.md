@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-29"
 status: status/aborted
-updated: "2026-06-29T16:01:05.702Z"
+updated: "2026-06-29T20:00:30.099Z"
 ---
 
 # Optimism - BB-Scan (2026-06-29)
@@ -24,7 +24,7 @@ updated: "2026-06-29T16:01:05.702Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-29T16:01:05.702Z` |
+| Triggered at (UTC) | `2026-06-29T20:00:30.099Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -76,9 +76,9 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 - `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
-- Pattern lookup evidence: `GetMcpTools(pattern="web3-bbp-rag|web3|bbp|rag")` returned only `obsidian-web3` tool matches and no `web3-bbp-rag` server.
+- Pattern lookup evidence: `GetMcpTools(pattern="rag|bbp")` returned no matches; `GetMcpTools(pattern="web3-bbp-rag|web3")` returned only `obsidian-web3` matches and no `web3-bbp-rag` server.
 - Optional fallback (`obsidian-web3 search_notes`) query:
-  - `Optimism duplicate disputed bridge dispute game signature replay precision`
+  - `optimism duplicate disputed finding`
   - Result: `[]`
 - Secondary fallback query:
   - `optimism status/duplicate status/disputed`
