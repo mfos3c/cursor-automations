@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-29"
 status: status/aborted
-updated: "2026-06-29T04:01:13.530Z"
+updated: "2026-06-29T08:02:40.682Z"
 ---
 
 # Optimism - BB-Scan (2026-06-29)
@@ -24,14 +24,13 @@ updated: "2026-06-29T04:01:13.530Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-29T04:01:13.530Z` |
+| Triggered at (UTC) | `2026-06-29T08:02:40.682Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's expected daily pick file (`20-bounties/daily-pick-2026-06-29.md`) was missing.
-- Loaded the most recent available daily pick from git workspace: `[[20-bounties/daily-pick-2026-06-26]]`.
+- Loaded today's daily pick from git workspace: `[[20-bounties/daily-pick-2026-06-29]]`.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
@@ -77,9 +76,12 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 - `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker).
 - Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
-- Pattern lookup evidence: `GetMcpTools(pattern="web3-bbp-rag")` returned no matches.
+- Pattern lookup evidence: `GetMcpTools(pattern="web3-bbp-rag|web3|bbp|rag")` returned only `obsidian-web3` tool matches and no `web3-bbp-rag` server.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `Optimism duplicate disputed bridge dispute game signature replay precision`
+  - Result: `[]`
+- Secondary fallback query:
+  - `optimism status/duplicate status/disputed`
   - Result: `[]`
 - Local `30-findings/` scan found prior Optimism scan notes and no explicit `status/duplicate` or `status/disputed` markers in `optimism-scan-*.md`.
 - Same-run duplicate/disputed bug-class determination still cannot be completed without mandatory RAG preflight support.
