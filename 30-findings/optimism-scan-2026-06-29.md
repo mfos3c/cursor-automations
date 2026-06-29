@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-29"
 status: status/aborted
-updated: "2026-06-29T08:02:40.682Z"
+updated: "2026-06-29T12:02:03.959Z"
 ---
 
 # Optimism - BB-Scan (2026-06-29)
@@ -24,7 +24,7 @@ updated: "2026-06-29T08:02:40.682Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-29T08:02:40.682Z` |
+| Triggered at (UTC) | `2026-06-29T12:02:03.959Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -41,7 +41,7 @@ updated: "2026-06-29T08:02:40.682Z"
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
 - `out_of_scope`: exposed operator API issues, chain-operator best-practice issues, known upstream devp2p issues, mainnet/public-testnet testing, pricing-oracle and third-party system testing.
-- `known_issues`: dispute-game reordering/bond-loss scenario, known op-challenger class, bridge token misconfiguration foot-guns, OptimismPortal stranded ETH edge case, prior Sherlock/Cantina findings as duplicate-risk baseline.
+- `known_issues`: dispute-game reordering/bond-loss scenario, known op-challenger class, known upstream devp2p class, bridge token configuration foot-guns, prior Sherlock/Cantina findings as duplicate-risk baseline.
 
 ## Abort reason
 
@@ -83,7 +83,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 - Secondary fallback query:
   - `optimism status/duplicate status/disputed`
   - Result: `[]`
-- Local `30-findings/` scan found prior Optimism scan notes and no explicit `status/duplicate` or `status/disputed` markers in `optimism-scan-*.md`.
+- Local `30-findings/` scan query `^status:\s*status/(duplicate|disputed)` found no matches in `optimism-scan-*.md`.
 - Same-run duplicate/disputed bug-class determination still cannot be completed without mandatory RAG preflight support.
 
 ## OOS reminders from daily pick
