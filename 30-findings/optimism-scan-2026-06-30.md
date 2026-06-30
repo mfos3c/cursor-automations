@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-30"
 status: status/aborted
-updated: "2026-06-30T04:01:27.259Z"
+updated: "2026-06-30T08:00:42.811Z"
 ---
 
 # Optimism - BB-Scan (2026-06-30)
@@ -24,14 +24,13 @@ updated: "2026-06-30T04:01:27.259Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-30T04:01:27.259Z` |
+| Triggered at (UTC) | `2026-06-30T08:00:42.811Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's file `20-bounties/daily-pick-2026-06-30.md` was not present in the git workspace.
-- Loaded most recent daily pick fallback: `[[20-bounties/daily-pick-2026-06-29]]`.
+- Loaded today's daily pick: `[[20-bounties/daily-pick-2026-06-30]]`.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
@@ -41,8 +40,8 @@ updated: "2026-06-30T04:01:27.259Z"
 - `scope_url`: `https://immunefi.com/bug-bounty/optimism/scope/`
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
-- `out_of_scope`: exposed operator API issues, chain-operator best-practice issues, known upstream devp2p issues, bridge token misconfiguration foot-guns, mainnet/public-testnet testing, pricing-oracle testing, and third-party system testing.
-- `known_issues`: dispute-game transaction reordering/bond-loss scenario, known op-challenger issue class, known upstream devp2p class, bridge token configuration foot-guns/portal edge cases, prior Sherlock/Cantina findings as duplicate-risk baseline.
+- `out_of_scope`: no testing on mainnet/public testnet deployed code; no testing with pricing oracles or third-party contracts/systems; no DoS/high-volume traffic; no social engineering/phishing; no public disclosure of unresolved vulnerabilities.
+- `known_issues`: L1 reorg prediction dispute-game transaction reordering/bond outcome effects; known `op-challenger` issue class; known upstream devp2p issue classes; bridge token misconfiguration foot-guns/bridge edge cases; prior Sherlock/Cantina findings treated as duplicate-risk baseline.
 
 ## Abort reason
 
