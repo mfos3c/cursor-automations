@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-30"
 status: status/aborted
-updated: "2026-06-30T08:00:42.811Z"
+updated: "2026-06-30T12:00:53.714Z"
 ---
 
 # Optimism - BB-Scan (2026-06-30)
@@ -24,7 +24,7 @@ updated: "2026-06-30T08:00:42.811Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-30T08:00:42.811Z` |
+| Triggered at (UTC) | `2026-06-30T12:00:53.714Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
