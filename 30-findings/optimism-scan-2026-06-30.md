@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-06-30"
 status: status/aborted
-updated: "2026-06-30T00:01:47.413Z"
+updated: "2026-06-30T04:01:27.259Z"
 ---
 
 # Optimism - BB-Scan (2026-06-30)
@@ -24,7 +24,7 @@ updated: "2026-06-30T00:01:47.413Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-06-30T00:01:47.413Z` |
+| Triggered at (UTC) | `2026-06-30T04:01:27.259Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -76,17 +76,16 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- `web3-bbp-rag`: unavailable in MCP catalog during this run (hard blocker).
-- Direct lookup evidence: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
-- Pattern lookup evidence: `GetMcpTools(pattern="web3-bbp-rag|web3|bbp|rag")` returned no matches for `web3-bbp-rag`.
+- Mandatory MCP unavailable: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
+- Pattern discovery fallback: `GetMcpTools(pattern="web3|bbp|rag")` returned only `obsidian-web3` matches and no `web3-bbp-rag` server.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `Optimism duplicate disputed bridge dispute game signature replay precision`
   - Result: `[]`
 - Secondary fallback query:
   - `optimism status/duplicate status/disputed`
   - Result: `[]`
-- Local `30-findings/` scan query `^status:\s*status/(duplicate|disputed)` found no matches in `optimism-scan-*.md`.
-- Same-run duplicate/disputed bug-class determination still cannot be completed without mandatory RAG preflight support.
+- Local `30-findings/` scan found prior `optimism-scan-*.md` notes and no explicit `status/duplicate` or `status/disputed` frontmatter markers in that note set.
+- Same-run duplicate/disputed bug-class determination cannot be completed without mandatory RAG preflight support.
 
 ## OOS reminders from daily pick
 
