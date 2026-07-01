@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-01"
 status: status/aborted
-updated: "2026-07-01T04:00:14.409Z"
+updated: "2026-07-01T08:01:17.692Z"
 ---
 
 # Optimism - BB-Scan (2026-07-01)
@@ -24,14 +24,14 @@ updated: "2026-07-01T04:00:14.409Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-01T04:00:14.409Z` |
+| Triggered at (UTC) | `2026-07-01T08:01:17.692Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's file `[[20-bounties/daily-pick-2026-07-01]]` was not present in git workspace.
-- Fallback used: most recent daily pick `[[20-bounties/daily-pick-2026-06-30]]`.
+- Today's file `[[20-bounties/daily-pick-2026-07-01]]` is present in git workspace.
+- Fallback was not needed.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
@@ -80,7 +80,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 - Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
 - Pattern discovery fallback: `GetMcpTools(pattern="web3")` returned `obsidian-web3` (`serverStatus: loading`) and `web3-bbp-rag` (`serverStatus: error`), confirming `web3-bbp-rag` remained unavailable for tool calls.
 - Optional fallback (`obsidian-web3 search_notes`) query:
-  - `Optimism duplicate disputed bridge dispute game signature replay precision`
+  - `Optimism duplicate disputed finding`
   - Result: `[]`
 - Secondary fallback query:
   - `optimism status/duplicate status/disputed`
