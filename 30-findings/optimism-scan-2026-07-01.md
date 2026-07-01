@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-01"
 status: status/aborted
-updated: "2026-07-01T16:00:55.036Z"
+updated: "2026-07-01T20:00:46.676Z"
 ---
 
 # Optimism - BB-Scan (2026-07-01)
@@ -24,7 +24,7 @@ updated: "2026-07-01T16:00:55.036Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-01T16:00:55.036Z` |
+| Triggered at (UTC) | `2026-07-01T20:00:46.676Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -78,7 +78,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 ## Duplicate radar summary
 
 - Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
-- Pattern discovery fallback: `GetMcpTools(pattern="web3")` returned `obsidian-web3` (`serverStatus: ready`) and `web3-bbp-rag` (`serverStatus: error`), confirming `web3-bbp-rag` remained unavailable for tool calls.
+- Pattern discovery fallback: `GetMcpTools(pattern="web3-bbp-rag|bbp|rag")` returned `web3-bbp-rag` with `serverStatus: error`, reconfirming tool discovery is broken.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `Optimism duplicate disputed finding`
   - Result: `[]`
