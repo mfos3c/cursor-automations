@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-01"
 status: status/aborted
-updated: "2026-07-01T00:02:51.685Z"
+updated: "2026-07-01T04:00:14.409Z"
 ---
 
 # Optimism - BB-Scan (2026-07-01)
@@ -24,7 +24,7 @@ updated: "2026-07-01T00:02:51.685Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-01T00:02:51.685Z` |
+| Triggered at (UTC) | `2026-07-01T04:00:14.409Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -48,7 +48,7 @@ updated: "2026-07-01T00:02:51.685Z"
 
 Step 1 in `automations/bb-scan-prompt.md` requires `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
 
-In this runtime, MCP discovery returned only `Cursor Automation Tools` and `obsidian-web3`; `web3-bbp-rag` was not available, so mandatory RAG preflight could not be executed.
+In this runtime, direct MCP discovery for `web3-bbp-rag` returned `serverStatus: error` ("failed during live tool discovery"), so mandatory RAG preflight could not be executed.
 Per runbook requirement ("mandatory"), scan was aborted before producing any LEAD from x-ray/solidity-auditor.
 
 ## Prior-art links (workspace)
@@ -77,8 +77,8 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `MCP server "web3-bbp-rag" not found. Available servers: Cursor Automation Tools, obsidian-web3`.
-- Pattern discovery fallback: `GetMcpTools(pattern="web3|rag|bbp")` returned only `obsidian-web3` matches and no `web3-bbp-rag` server.
+- Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
+- Pattern discovery fallback: `GetMcpTools(pattern="web3")` returned `obsidian-web3` (`serverStatus: loading`) and `web3-bbp-rag` (`serverStatus: error`), confirming `web3-bbp-rag` remained unavailable for tool calls.
 - Optional fallback (`obsidian-web3 search_notes`) query:
   - `Optimism duplicate disputed bridge dispute game signature replay precision`
   - Result: `[]`
