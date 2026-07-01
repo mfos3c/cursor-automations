@@ -1,0 +1,288 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-26",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Any testing on mainnet or public testnet deployed code",
+      "Any testing with pricing oracles or third-party smart contracts",
+      "Any testing with third-party systems, applications, or websites",
+      "Denial-of-service attacks and significant automated traffic generation",
+      "Social engineering and phishing attacks",
+      "Public disclosure of unpatched vulnerabilities"
+    ],
+    "known_issues": [
+      "L1 reorg prediction can reorder dispute-game transactions and bond outcomes",
+      "op-challenger incorrect-resolution class detectable by op-dispute-mon",
+      "Known upstream devp2p issue classes",
+      "Bridge token misconfiguration foot-guns",
+      "Known edge-case stranded ETH deposit via OptimismPortal contract senders"
+    ],
+    "prohibited_actions": [
+      "No exploit testing on mainnet/public testnet",
+      "No third-party app/system testing",
+      "No social engineering or phishing",
+      "No high-volume automated traffic or denial-of-service",
+      "No public disclosure before fix and approval"
+    ],
+    "submission_rules": [
+      "PoC required for all severities",
+      "KYC required for payout processing",
+      "Submit via Immunefi and keep coordinated disclosure"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger",
+      "PermissionedDisputeGame"
+    ],
+    "risk_flags": [
+      "prior_sherlock_cantina_findings_duplicate_risk"
+    ],
+    "scoring": 100,
+    "selection_reason": "Highest score with explicit smart-contract scope, clear exclusions/known issues, no deposit, and recent update within 14 days.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Pinto",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/221",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/221",
+    "repo_url": "https://github.com/pinto-org/protocol",
+    "last_updated": "2026-06-24",
+    "published_at": "2026-06-24",
+    "new_or_updated": true,
+    "chains": [
+      "base"
+    ],
+    "stack": "Smart-contract protocol",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 5000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Sherlock page did not expose complete known-issues list in public scrape",
+      "Prior Sherlock/Cantina audit findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Report through Sherlock only"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "partial_program_page_content",
+      "rules_not_fully_parseable"
+    ],
+    "scoring": 65,
+    "selection_reason": "Recent update and smart-contract scope, but reward ceiling is low and policy details were incomplete in accessible page output.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "scope_url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "repo_url": "https://github.com/Uniswap/v4-core",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "unichain"
+    ],
+    "stack": "Smart contracts + web app + infra bounty scope",
+    "languages": [
+      "Solidity",
+      "TypeScript",
+      "Python"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "deposit_amount": 50,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Known MEV strategies",
+      "Admin key compromise assumptions",
+      "Third-party protocol issues not caused by Uniswap code",
+      "Testnet-only issues without mainnet impact",
+      "Gas optimization-only suggestions"
+    ],
+    "known_issues": [
+      "Program-specific known-issues section not explicitly exposed in scrape output",
+      "Prior Sherlock/Cantina findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "No unauthorized testing on production/mainnet/public testnet",
+      "No live hosted service exploitation",
+      "No public disclosure without written consent",
+      "No data exfiltration or social engineering"
+    ],
+    "submission_rules": [
+      "Submit via Cantina platform",
+      "Functional PoC required for all reports",
+      "Report promptly (ideally within 24 hours)"
+    ],
+    "in_scope_contracts": [
+      "Uniswap v4 core",
+      "Uniswap v4 periphery",
+      "Uniswap v3 core/periphery",
+      "Uniswap v2 contracts",
+      "Unichain L1 contracts"
+    ],
+    "risk_flags": [
+      "known_issues_not_explicitly_listed"
+    ],
+    "scoring": 50,
+    "selection_reason": "Very large reward and acceptable deposit, but not recent and known-issues clarity was insufficient for high-confidence GO.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Arcadia Finance Smart Contracts",
+    "platform": "hackenproof",
+    "url": "https://hackenproof.com/programs",
+    "scope_url": "https://hackenproof.com/programs",
+    "last_updated": "2026-06-30",
+    "published_at": "2026-06-10",
+    "new_or_updated": true,
+    "chains": [
+      "base",
+      "optimism",
+      "unichain"
+    ],
+    "stack": "DeFi leveraged yield smart contracts",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 25000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Dashboard policy URL in configured source is login-gated",
+      "Detailed exclusions/known-issues could not be fully parsed from public programs listing"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Submit through HackenProof workflow"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "configured_dashboard_login_gated",
+      "listing_level_only_visibility"
+    ],
+    "scoring": 65,
+    "selection_reason": "Recently updated SC-focused program with no deposit requirement, but incomplete rule visibility keeps confidence low.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Chainlink",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/chainlink",
+    "scope_url": "https://www.hackerone.com/bug-bounty-programs",
+    "repo_url": "https://github.com/smartcontractkit/chainlink",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum"
+    ],
+    "stack": "Smart-contract + platform bounty listing",
+    "languages": [
+      "Solidity",
+      "Go"
+    ],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Program detail page was JS-gated in public fetch output",
+      "Only listing-level summary was parseable"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Submit through HackerOne program"
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "js_gated_program_page",
+      "insufficient_detail_for_rules_confidence"
+    ],
+    "scoring": 35,
+    "selection_reason": "Smart-contract signal exists in listing, but missing detail data and unknown maximum reward keep score and confidence low.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  }
+]
