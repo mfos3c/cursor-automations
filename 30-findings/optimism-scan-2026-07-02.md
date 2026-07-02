@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-02"
 status: status/aborted
-updated: "2026-07-02T04:00:49.068Z"
+updated: "2026-07-02T08:00:02.414Z"
 ---
 
 # Optimism - BB-Scan (2026-07-02)
@@ -24,14 +24,14 @@ updated: "2026-07-02T04:00:49.068Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-02T04:00:49.068Z` |
+| Triggered at (UTC) | `2026-07-02T08:00:02.414Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's file `[[20-bounties/daily-pick-2026-07-02]]` is missing in git workspace.
-- Fallback applied to most recent file: `[[20-bounties/daily-pick-2026-07-01]]`.
+- Today's file `[[20-bounties/daily-pick-2026-07-02]]` is present in git workspace.
+- No fallback to earlier daily-pick file was required.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
@@ -42,7 +42,7 @@ updated: "2026-07-02T04:00:49.068Z"
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
 - `out_of_scope`: no testing on mainnet/public testnet deployed code; no testing with pricing oracles or third-party contracts/systems; no DoS/high-volume traffic; no social engineering/phishing; no public disclosure of unresolved vulnerabilities.
-- `known_issues`: L1 reorg prediction dispute-game transaction reordering/bond outcome effects; known `op-challenger` issue class; known upstream devp2p issue classes; bridge token misconfiguration foot-guns/bridge edge cases; prior Sherlock/Cantina findings treated as duplicate-risk baseline.
+- `known_issues`: L1 reorg prediction dispute-game transaction reordering/bond outcome effects; known upstream devp2p issue classes; bridge token misconfiguration foot-guns/bridge edge cases; fake ERC-20 withdrawal class already blocked by L1 protections unless bypass is shown; prior Sherlock/Cantina findings treated as duplicate-risk baseline.
 
 ## Abort reason
 
@@ -79,14 +79,11 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 ## Duplicate radar summary
 
 - Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
-- Secondary discovery with `GetMcpTools(pattern="web3-bbp-rag|obsidian-web3|Cursor Automation Tools")` returned `web3-bbp-rag` as `serverStatus: error`; `obsidian-web3` was initially `loading` and later became `ready`.
+- Secondary discovery with `GetMcpTools(pattern="web3|bbp|rag|obsidian")` returned `web3-bbp-rag` as `serverStatus: error`; `obsidian-web3` progressed from `loading` to `ready`.
 - Optional fallback (`obsidian-web3 search_notes`) query:
-  - `Optimism duplicate disputed finding`
+  - `Optimism duplicate disputed bridge messenger dispute game`
   - Result: `[]`
-- Secondary fallback query:
-  - `optimism status/duplicate status/disputed`
-  - Result: `[]`
-- Local `30-findings/` scan query `^status:\s*status/(duplicate|disputed)` (on `optimism-scan-*.md`) returned no matches.
+- Local `30-findings/` scan found historical `optimism-scan-*.md` notes and no explicit `status/duplicate` or `status/disputed` frontmatter markers in that Optimism note set.
 
 ## OOS reminders from daily pick
 
