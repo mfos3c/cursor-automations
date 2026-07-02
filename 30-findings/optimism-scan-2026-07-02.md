@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-02"
 status: status/aborted
-updated: "2026-07-02T16:01:33.186Z"
+updated: "2026-07-02T20:02:31.832Z"
 ---
 
 # Optimism - BB-Scan (2026-07-02)
@@ -24,7 +24,7 @@ updated: "2026-07-02T16:01:33.186Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-02T16:01:33.186Z` |
+| Triggered at (UTC) | `2026-07-02T20:02:31.832Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -48,7 +48,7 @@ updated: "2026-07-02T16:01:33.186Z"
 
 Step 1 in `automations/bb-scan-prompt.md` requires `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
 
-In this runtime, direct MCP discovery for `web3-bbp-rag` repeatedly returned `serverStatus: error` ("failed during live tool discovery"), so mandatory RAG preflight could not be executed.
+In this runtime, MCP discovery for `web3-bbp-rag` returned `serverStatus: error` ("failed during live tool discovery"), so mandatory RAG preflight could not be executed.
 Per runbook requirement ("mandatory"), scan was aborted before producing any LEAD from x-ray/solidity-auditor.
 
 ## Prior-art links (workspace)
@@ -79,7 +79,7 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 ## Duplicate radar summary
 
 - Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
-- Retry lookup failed: `GetMcpTools(pattern="web3-bbp-rag")` returned the same `serverStatus: error` for `web3-bbp-rag`.
+- Availability recheck failed: `GetMcpTools(pattern="web3-bbp-rag|obsidian-web3")` returned `web3-bbp-rag: serverStatus=error` and optional fallback `obsidian-web3: serverStatus=loading`.
 - Local `30-findings/` scan found historical `optimism-scan-*.md` notes and no explicit `status/duplicate` or `status/disputed` frontmatter markers in that Optimism note set.
 
 ## OOS reminders from daily pick
