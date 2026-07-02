@@ -1,0 +1,237 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-26",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 + smart contracts + blockchain services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Testing on mainnet/public testnet deployments",
+      "Third-party systems, websites, and pricing oracles",
+      "Social engineering and phishing",
+      "Centralization-risk only reports without exploit",
+      "End-of-service execution clients and documented excluded components"
+    ],
+    "known_issues": [
+      "Known devp2p current-version issue classes",
+      "L1 reorg prediction dispute-game bond-loss scenario",
+      "Bridge token misconfiguration foot-guns and documented edge cases",
+      "Fake ERC-20 withdrawal class blocked by L1 protection unless bypassed",
+      "Prior Sherlock/Cantina findings should be treated as duplicate-risk baseline"
+    ],
+    "prohibited_actions": [
+      "Do not test on live mainnet/public testnet",
+      "Do not test third-party systems or websites",
+      "Do not perform denial-of-service or traffic amplification",
+      "Do not perform social engineering",
+      "Do not publicly disclose before coordinated resolution"
+    ],
+    "submission_rules": [
+      "PoC required",
+      "KYC required for payouts",
+      "Submit through Immunefi program workflow",
+      "Follow coordinated disclosure until patched"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger",
+      "PermissionedDisputeGame"
+    ],
+    "risk_flags": [
+      "smart_contract_and_blockchain_scope_mixed",
+      "known_issue_overlap_risk",
+      "bright_data_mcp_auth_failed_fallback_used"
+    ],
+    "scoring": 100,
+    "selection_reason": "Highest eligible score with high-confidence parsing: updated within 14 days, reward >= 50k, no deposit, explicit smart-contract scope, and clear out-of-scope/known-issues rules.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "scope_url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "repo_url": "https://github.com/Uniswap",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "unichain"
+    ],
+    "stack": "EVM smart contracts + web + infrastructure",
+    "languages": [
+      "Solidity",
+      "TypeScript"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 50,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "MEV strategies that function as intended",
+      "Third-party protocol issues not caused by Uniswap code",
+      "Social engineering and phishing",
+      "Theoretical issues without practical exploit path",
+      "Gas optimization suggestions without security impact"
+    ],
+    "known_issues": [
+      "Explicit duplicate of known issues are weak/non-payable",
+      "Prior Sherlock/Cantina findings should be checked for duplicate-risk"
+    ],
+    "prohibited_actions": [
+      "No unauthorized testing on mainnet/public testnets",
+      "No testing live hosted services",
+      "No public disclosure without written consent",
+      "No exploitation, data exfiltration, or service disruption"
+    ],
+    "submission_rules": [
+      "Submit through Spearbit/Cantina",
+      "Provide clear impact and reproducible steps",
+      "Functional PoC required for all reports",
+      "Quantify impact and affected contracts/functions"
+    ],
+    "in_scope_contracts": [
+      "Uniswap v4 Core",
+      "Permit2",
+      "Universal Router",
+      "Uniswap v3 Core",
+      "Uniswap v3 Periphery",
+      "Uniswap v2 contracts",
+      "Unichain bridge/finality contracts"
+    ],
+    "risk_flags": [
+      "mixed_scope_not_smart-contract-only",
+      "deposit_required",
+      "duplicate_findings_risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Meets threshold on reward, deposit <= max, explicit SC scope, and clear rules, but not recently updated and not top score.",
+    "confidence": "high",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Flying Tulip",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-06-18",
+    "new_or_updated": true,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (listing-level only)",
+    "languages": [],
+    "reward_max": 1000000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [
+      "Prior Sherlock/Cantina findings may create duplicate-risk"
+    ],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules_unclear_from_listing_only",
+      "detail_page_scope_not_retrieved",
+      "duplicate_findings_risk"
+    ],
+    "scoring": 90,
+    "selection_reason": "Strong quantitative score from listing data, but scope exclusions/known issues were not parsed with sufficient clarity.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "HackenProof Bounties Listing",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "scope_url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Unknown (login-gated)",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 0,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "login_gated_blocked",
+      "insufficient_data_low_confidence",
+      "smart_contract_scope_not_confirmed"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped due to inaccessible login-gated listing and unconfirmed smart-contract scope.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "HackerOne Opportunities Listing",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "scope_url": "https://hackerone.com/opportunities/all",
+    "new_or_updated": false,
+    "chains": [],
+    "stack": "Unknown (content blocked/minimal)",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "listing_content_unavailable",
+      "insufficient_data_low_confidence",
+      "smart_contract_scope_not_confirmed"
+    ],
+    "scoring": 0,
+    "selection_reason": "Skipped because opportunities listing did not expose smart-contract program details in this run.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  }
+]
