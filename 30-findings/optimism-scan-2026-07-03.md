@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-03"
 status: status/aborted
-updated: "2026-07-03T04:01:55.452Z"
+updated: "2026-07-03T08:01:16.593Z"
 ---
 
 # Optimism - BB-Scan (2026-07-03)
@@ -24,32 +24,33 @@ updated: "2026-07-03T04:01:55.452Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-03T04:01:55.452Z` |
+| Triggered at (UTC) | `2026-07-03T08:01:16.593Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
 ## Step 0 decision
 
-- Today's file `[[20-bounties/daily-pick-2026-07-03]]` is missing in the git workspace.
-- Fallback file selected per runbook: `[[20-bounties/daily-pick-2026-07-02]]` (most recent).
+- Today's file `[[20-bounties/daily-pick-2026-07-03]]` exists in the git workspace.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
 
 ## Parsed daily-pick context
 
+- `recon_prompt`: present (`# Recon Prompt - Optimism` section in the daily pick)
 - `url`: `https://immunefi.com/bug-bounty/optimism/`
 - `scope_url`: `https://immunefi.com/bug-bounty/optimism/scope/`
 - `repo_url`: `https://github.com/ethereum-optimism/optimism`
 - `chains`: `optimism`, `ethereum`
-- `out_of_scope`: no testing on mainnet/public testnet deployed code; no testing with pricing oracles or third-party contracts/systems; no DoS/high-volume traffic; no social engineering/phishing; no public disclosure of unresolved vulnerabilities.
-- `known_issues`: L1 reorg prediction dispute-game transaction reordering/bond outcome effects; known upstream devp2p issue classes; bridge token misconfiguration foot-guns/bridge edge cases; fake ERC-20 withdrawal class already blocked by L1 protections unless bypass is shown; prior Sherlock/Cantina findings treated as duplicate-risk baseline.
+- `out_of_scope`: no testing on mainnet/public testnet deployed code; no testing with third-party systems, applications, websites, pricing oracles, or third-party smart contracts; no DoS/high-traffic automation; no phishing/social engineering; no centralization-only, leaked-key, or privileged-address-only claims.
+- `known_issues`: L1 reorg prediction dispute-game bond-loss scenario; known `devp2p` upstream classes; bridge misconfiguration foot-guns; fake ERC-20 withdrawal class blocked by L1 protections unless bypass is proven; prior Sherlock/Cantina findings should be treated as duplicate-risk baseline.
 
 ## Abort reason
 
-Step 1 in `automations/bb-scan-prompt.md` requires `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
+Step 1 in `automations/bb-scan-prompt.md` requires mandatory `web3-bbp-rag` MCP calls (`pre_flight_review`, `search`, `find_similar_audits`) before clone and contract review.
 
-In this runtime, MCP discovery for `web3-bbp-rag` returned `serverStatus: error` ("failed during live tool discovery"), so mandatory RAG preflight could not be executed.
-Per runbook requirement ("mandatory"), scan was aborted before producing any LEAD from x-ray/solidity-auditor.
+In this runtime, `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with message: `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
+
+Because `web3-bbp-rag` is mandatory, the workflow aborted before clone, x-ray, and solidity-auditor execution.
 
 ## Prior-art links (workspace)
 
@@ -79,19 +80,19 @@ Per runbook requirement ("mandatory"), scan was aborted before producing any LEA
 
 ## Duplicate radar summary
 
-- Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` returned `serverStatus: error` with `This MCP server failed during live tool discovery. Its tools are unavailable until the connection is fixed.`
-- Optional fallback availability succeeded: `GetMcpTools(server="obsidian-web3")` returned `serverStatus: ready`.
-- Optional fallback query returned no additional prior-art matches: `obsidian-web3 search_notes(query="optimism duplicate disputed bridge dispute game replay insolvency", pathPrefix="30-findings")` => `[]`.
-- Local `30-findings/` scan found historical `optimism-scan-*.md` notes and no explicit `status/duplicate` or `status/disputed` markers (`rg "status:\\s*status\\/(duplicate|disputed)" 30-findings/optimism-scan-*.md` => no matches).
+- Mandatory server lookup failed: `GetMcpTools(server="web3-bbp-rag")` => `serverStatus: error` (`failed during live tool discovery`).
+- Optional fallback availability succeeded: `GetMcpTools(server="obsidian-web3")` => `serverStatus: ready`.
+- Optional fallback query returned no additional prior-art matches: `obsidian-web3 search_notes(query="optimism duplicate disputed bridge dispute game replay insolvency", pathPrefix="30-findings", limit=20)` => `[]`.
+- Local `30-findings/` scan found no explicit `status/duplicate` or `status/disputed` markers for `optimism-scan-*` (`rg "status:\\s*status\\/(duplicate|disputed)"` => no matches).
 
 ## OOS reminders from daily pick
 
 - No testing on mainnet or public testnet deployed code.
-- No testing with pricing oracles or third-party smart contracts.
-- No testing with third-party systems/applications/websites.
+- No testing with third-party systems, applications, websites, pricing oracles, or third-party smart contracts.
 - No denial-of-service or high-volume automated traffic.
-- No public disclosure of unpatched vulnerabilities.
-- No phishing/social engineering dependent impacts.
+- No phishing/social engineering.
+- No centralization-only, leaked-key, or privileged-address-only assumptions.
+- No public disclosure before final resolution and explicit project permission.
 
 ## x-ray LEAD list
 
