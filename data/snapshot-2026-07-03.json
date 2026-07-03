@@ -1,0 +1,300 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-26",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 rollup + smart contracts + blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "No testing on mainnet or public testnet deployed code.",
+      "No testing with third-party systems, applications, websites, pricing oracles, or smart contracts.",
+      "No denial-of-service attacks or high-traffic automated testing.",
+      "No phishing or social engineering attacks.",
+      "No impacts that rely on leaked keys, privileged addresses, or pure centralization-risk claims."
+    ],
+    "known_issues": [
+      "Known devp2p upstream issues are ineligible.",
+      "L1 reorg prediction dispute-game bond-loss scenario is known.",
+      "Bridge token misconfiguration foot-guns are documented known behavior.",
+      "Fake ERC-20 withdrawal is blocked by L1 protections unless bypass is demonstrated."
+    ],
+    "prohibited_actions": [
+      "Any testing on mainnet or public testnet deployed code.",
+      "Any testing with pricing oracles or third-party smart contracts.",
+      "Any testing with third-party systems, applications, or websites.",
+      "Any denial-of-service attack or significant traffic generation.",
+      "Public disclosure before patch and explicit permission."
+    ],
+    "submission_rules": [
+      "PoC required for all severities.",
+      "KYC required for payout processing.",
+      "Follow responsible publication (approval required before disclosure)."
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "ProxyAdmin",
+      "DisputeGameFactory",
+      "L2OutputOracle",
+      "OptimismMintableERC20Factory",
+      "L1CrossDomainMessenger",
+      "PermissionedDisputeGame"
+    ],
+    "risk_flags": [
+      "sherlock_cantina_prior_findings_duplicate_risk_baseline"
+    ],
+    "scoring": 100,
+    "selection_reason": "Highest weighted score: recent update, very high reward, no deposit, explicit smart-contract scope, and clearly parsed rules/known issues.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "scope_url": "https://cantina.xyz/bounties/f9df94db-c7b1-434b-bb06-d1360abdd1be",
+    "repo_url": "https://github.com/Uniswap",
+    "last_updated": "2024-11-26",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum",
+      "unichain"
+    ],
+    "stack": "EVM smart contracts + web + infrastructure",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 50,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Gas optimization suggestions without security impact.",
+      "Theoretical vulnerabilities with no practical exploit path.",
+      "MEV strategies that work as intended.",
+      "Third-party protocol issues not caused by Uniswap code.",
+      "Governance attacks requiring majority voting power."
+    ],
+    "known_issues": [
+      "Duplicate of known issues is listed as weak/non-rewardable submission.",
+      "Program-specific known issues list is not fully exposed without authenticated workflow."
+    ],
+    "prohibited_actions": [
+      "No unauthorized testing on mainnet/public testnet.",
+      "Do not test vulnerabilities against live hosted services.",
+      "No public disclosure without written consent.",
+      "No exploitation or private-data exfiltration."
+    ],
+    "submission_rules": [
+      "Functional PoC required for all reports.",
+      "Include impact quantification and affected contracts/functions.",
+      "Submit via Cantina with reproducible steps."
+    ],
+    "in_scope_contracts": [
+      "Uniswap v4 Core",
+      "Permit2",
+      "Universal Router",
+      "Uniswap v3 core/periphery",
+      "Uniswap v2 core/router"
+    ],
+    "risk_flags": [
+      "mixed_web2_web3_scope",
+      "deposit_required",
+      "known_issues_not_explicitly_enumerated"
+    ],
+    "scoring": 60,
+    "selection_reason": "High reward and clear smart-contract scope, but no 14-day recency and known-issues clarity is incomplete.",
+    "confidence": "low",
+    "verdict": "HOLD",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider",
+      "foundry_fork"
+    ]
+  },
+  {
+    "program_name": "Aave V4",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/300",
+    "last_updated": "2026-05-18",
+    "published_at": "2026-05-18",
+    "new_or_updated": false,
+    "chains": [
+      "ethereum"
+    ],
+    "stack": "EVM smart contracts",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 2500000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 250,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Sherlock details/scope tabs are partially gated in this run; submission requirements are incomplete."
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "details_scope_not_fully_visible",
+      "deposit_above_profile_limit",
+      "sherlock_prior_findings_duplicate_risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Reward is strong but recency bonus absent, rules parsing low confidence, and inferred submission deposit exceeds profile maximum.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Pinto",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties/221",
+    "scope_url": "https://audits.sherlock.xyz/bug-bounties/221",
+    "last_updated": "2026-06-24",
+    "published_at": "2026-06-24",
+    "new_or_updated": true,
+    "chains": [],
+    "stack": "Unknown",
+    "languages": [],
+    "reward_max": 5000,
+    "reward_currency": "USD",
+    "deposit_required": true,
+    "deposit_amount": 250,
+    "kyc_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Listing and details page do not expose full scope/rules in this run.",
+      "Search snippet indicates critical submissions require 250 USDC deposit."
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "reward_below_profile_minimum",
+      "deposit_above_profile_limit",
+      "rules_unclear",
+      "sherlock_prior_findings_duplicate_risk"
+    ],
+    "scoring": 45,
+    "selection_reason": "Recent update helps score, but low max reward, incomplete rules parsing, and inferred deposit > profile cap trigger skip.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "git",
+      "block_explorer"
+    ]
+  },
+  {
+    "program_name": "Chainlink (HackerOne listing excerpt)",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/chainlink",
+    "scope_url": "https://hackerone.com/chainlink",
+    "last_updated": "2026-07-03",
+    "published_at": "2026-07-03",
+    "new_or_updated": true,
+    "chains": [],
+    "stack": "Mixed web2/web3 program listing",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Only high-level listing snippet accessible in this run; full policy page did not render."
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "dynamic_page_render_blocked",
+      "smart_contract_scope_unconfirmed"
+    ],
+    "scoring": 50,
+    "selection_reason": "Recency + no-deposit pattern from listing, but SC scope cannot be confirmed from accessible content.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "manual_read"
+    ]
+  },
+  {
+    "program_name": "HackenProof bug bounty listings (login-gated)",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "scope_url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "last_updated": "2026-07-03",
+    "published_at": "2026-07-03",
+    "new_or_updated": true,
+    "chains": [],
+    "stack": "Unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": false,
+    "reputation_requirement": 100,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [
+      "Platform is login-gated; listing details not accessible in this run."
+    ],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "login_gated",
+      "reputation_requirement_unverified",
+      "smart_contract_scope_unknown"
+    ],
+    "scoring": 50,
+    "selection_reason": "Insufficient public data due login gate; cannot validate smart-contract scope or rules.",
+    "confidence": "low",
+    "verdict": "SKIP",
+    "services_to_activate": [
+      "manual_read"
+    ]
+  }
+]
