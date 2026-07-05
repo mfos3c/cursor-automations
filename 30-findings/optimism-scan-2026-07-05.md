@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-05"
 status: status/aborted
-updated: "2026-07-05T12:02:19.038Z"
+updated: "2026-07-05T16:01:42Z"
 ---
 
 # Optimism - BB-Scan (2026-07-05)
@@ -24,7 +24,7 @@ updated: "2026-07-05T12:02:19.038Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-05T12:02:19.038Z` |
+| Triggered at (UTC) | `2026-07-05T16:00:14.997Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -34,6 +34,11 @@ updated: "2026-07-05T12:02:19.038Z"
 - Fallback to latest available daily pick: `[[20-bounties/daily-pick-2026-07-03]]`.
 - Parsed daily-pick verdict from frontmatter: `GO`.
 - Step 0 gate passed.
+
+## Rerun note (16:00 UTC)
+
+- This file was updated by the 16:00 UTC cron execution (`0 */4 * * *`).
+- Mandatory `web3-bbp-rag` tool discovery was retried in this run and remained unavailable (`serverStatus: error`), so the scan stays in `ABORT` state with `0` leads.
 
 ## Parsed daily-pick context
 
