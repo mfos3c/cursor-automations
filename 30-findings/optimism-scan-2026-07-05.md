@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-05"
 status: status/aborted
-updated: "2026-07-05T04:01:59.356Z"
+updated: "2026-07-05T08:02:53.338Z"
 ---
 
 # Optimism - BB-Scan (2026-07-05)
@@ -24,7 +24,7 @@ updated: "2026-07-05T04:01:59.356Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-05T04:01:59.356Z` |
+| Triggered at (UTC) | `2026-07-05T08:02:53.338Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -84,7 +84,8 @@ Because `web3-bbp-rag` is mandatory, the workflow aborted before clone, x-ray, a
 ## Duplicate radar summary
 
 - Mandatory server lookup failed in this run: `GetMcpTools(server="web3-bbp-rag")` => `serverStatus: error` (`failed during live tool discovery`).
-- Availability check during this run returned `obsidian-web3: serverStatus=ready` and `web3-bbp-rag: serverStatus=error` (`GetMcpTools(pattern="web3|bbp|rag|obsidian")`).
+- Pattern availability check returned `obsidian-web3: serverStatus=loading` and `web3-bbp-rag: serverStatus=error` (`GetMcpTools(pattern="web3")`).
+- Direct obsidian discovery was healthy (`GetMcpTools(server="obsidian-web3")` => `serverStatus: ready`), enabling optional fallback queries.
 - Optional fallback lookup on `obsidian-web3 search_notes` (query: `optimism status/duplicate status/disputed bridge dispute game`) returned `[]` (no matches).
 - Additional fallback lookup (`Optimism Scan`) also returned `[]` in this runtime.
 - Local `30-findings/` scan found no explicit `status/duplicate` or `status/disputed` markers in `optimism-scan-*.md` (`rg "^status:\\s*status\\/(duplicate|disputed)" --glob "optimism-scan-*.md"` => no matches).
