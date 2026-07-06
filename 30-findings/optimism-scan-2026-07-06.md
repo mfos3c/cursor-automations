@@ -9,7 +9,7 @@ platform: immunefi
 protocol: optimism
 date: "2026-07-06"
 status: status/aborted
-updated: "2026-07-06T12:02:06Z"
+updated: "2026-07-06T16:04:31Z"
 ---
 
 # Optimism - BB-Scan (2026-07-06)
@@ -24,7 +24,7 @@ updated: "2026-07-06T12:02:06Z"
 | Verdict | `ABORT` |
 | Leads | `0` |
 | Run status | `blocked at mandatory Step 1 RAG preflight` |
-| Triggered at (UTC) | `2026-07-06T12:02:06.180Z` |
+| Triggered at (UTC) | `2026-07-06T16:02:24.426Z` |
 | Trigger schedule | `0 */4 * * *` |
 | Automation ID | `347313ef-4e1c-4fa3-b2eb-7cb704fb2d9f` |
 
@@ -38,6 +38,7 @@ updated: "2026-07-06T12:02:06Z"
 
 - 08:00 UTC execution retried mandatory `web3-bbp-rag` discovery and remained unavailable (`serverStatus: error`), so the scan stayed in `ABORT` with `0` leads.
 - 12:02 UTC execution retried mandatory `web3-bbp-rag` discovery and still received `serverStatus: error` (`failed during live tool discovery`); run remains `ABORT`.
+- 16:02 UTC execution retried mandatory `web3-bbp-rag` discovery and again received `serverStatus: error` (`failed during live tool discovery`); run remains `ABORT`.
 
 ## Parsed daily-pick context
 
