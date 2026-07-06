@@ -1,0 +1,446 @@
+[
+  {
+    "program_name": "Optimism",
+    "platform": "immunefi",
+    "url": "https://immunefi.com/bug-bounty/optimism/",
+    "scope_url": "https://immunefi.com/bug-bounty/optimism/scope/",
+    "repo_url": "https://github.com/ethereum-optimism/optimism",
+    "last_updated": "2026-06-26",
+    "published_at": "2022-01-14",
+    "new_or_updated": true,
+    "chains": [
+      "optimism",
+      "ethereum"
+    ],
+    "stack": "EVM L2 rollup + smart contracts + blockchain client services",
+    "languages": [
+      "Solidity",
+      "Go",
+      "C/C++"
+    ],
+    "reward_max": 2000042,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "kyc_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [
+      "Testing on mainnet or public testnet deployed code",
+      "Testing with pricing oracles or third-party smart contracts",
+      "Testing with third-party systems, applications, or websites",
+      "Denial-of-service and high-traffic automated testing",
+      "Phishing or social engineering attacks"
+    ],
+    "known_issues": [
+      "L1 reorg dispute-game transaction reordering bond-loss scenario",
+      "Known op-challenger incorrect-resolution cases detected by op-dispute-mon",
+      "Known upstream devp2p issue classes",
+      "Bridge token misconfiguration foot-guns",
+      "Fake ERC-20 withdrawal class blocked by L1 bridge checks unless bypass proven"
+    ],
+    "prohibited_actions": [
+      "No testing on mainnet/public testnet",
+      "No testing with third-party smart contracts or systems",
+      "No DoS or significant automated traffic",
+      "No phishing/social engineering",
+      "No premature public disclosure"
+    ],
+    "submission_rules": [
+      "PoC required for all severities",
+      "KYC required for payout",
+      "Responsible publication approval required"
+    ],
+    "in_scope_contracts": [
+      "OptimismPortal",
+      "L1CrossDomainMessenger",
+      "DisputeGameFactory",
+      "L2StandardBridge",
+      "L1StandardBridge"
+    ],
+    "risk_flags": [
+      "sherlock-cantina-prior-findings-duplicate-risk-baseline"
+    ],
+    "scoring": 100,
+    "selection_reason": "Updated within 14 days, reward >= $50k, no deposit requirement, explicit smart-contract scope, and clearly parsed out-of-scope/known-issues/prohibited-actions rules.",
+    "confidence": "high",
+    "verdict": "GO",
+    "services_to_activate": [
+      "git",
+      "foundry",
+      "block_explorer",
+      "rpc_provider"
+    ]
+  },
+  {
+    "program_name": "Rujira",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-07-03",
+    "new_or_updated": true,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Sherlock bug bounty listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 25000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-not-fully-visible",
+      "sherlock-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 65,
+    "selection_reason": "Recent update and likely smart-contract scope, but low confidence due missing detail-page rule extraction.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Aave V4",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-05-18",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Sherlock bug bounty listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 2500000,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-not-fully-visible",
+      "sherlock-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Reward threshold and likely SC scope satisfied, but no high-confidence rule parsing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Flying Tulip",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-06-18",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Sherlock bug bounty listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 1000000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-not-fully-visible",
+      "sherlock-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Reward threshold and likely SC scope satisfied, but no high-confidence rule parsing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Paradex",
+    "platform": "sherlock",
+    "url": "https://audits.sherlock.xyz/bug-bounties",
+    "last_updated": "2026-06-08",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Sherlock bug bounty listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 500000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-not-fully-visible",
+      "sherlock-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Reward threshold and likely SC scope satisfied, but no high-confidence rule parsing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Uniswap",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2024-11-26",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 15500000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "deposit-amount-not-visible-may-exceed-100-usd-hard-filter",
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Large reward and likely SC scope, but deposit amount and detailed rules are not visible in extracted listing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Reserve Protocol Bug Bounty",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2026-03-26",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 10000000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "deposit-amount-not-visible-may-exceed-100-usd-hard-filter",
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Large reward and likely SC scope, but deposit amount and detailed rules are not visible in extracted listing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Euler-Bounty",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2024-08-21",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 7500000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "deposit-amount-not-visible-may-exceed-100-usd-hard-filter",
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Large reward and likely SC scope, but deposit amount and detailed rules are not visible in extracted listing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Polymarket",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2026-04-12",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 5000000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "deposit-amount-not-visible-may-exceed-100-usd-hard-filter",
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Large reward and likely SC scope, but deposit amount and detailed rules are not visible in extracted listing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "Morpho",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2024-03-27",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 2500000,
+    "reward_currency": "USDC",
+    "deposit_required": false,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 60,
+    "selection_reason": "Reward threshold and likely SC scope satisfied, but no high-confidence rule parsing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "dYdX Bug Bounty",
+    "platform": "cantina",
+    "url": "https://cantina.xyz/opportunities",
+    "published_at": "2026-05-08",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Smart contracts (inferred from Cantina opportunity listing)",
+    "languages": [
+      "Solidity"
+    ],
+    "reward_max": 1000000,
+    "reward_currency": "USDC",
+    "deposit_required": true,
+    "smart_contract_in_scope": true,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "deposit-amount-not-visible-may-exceed-100-usd-hard-filter",
+      "rules-not-fully-visible",
+      "cantina-prior-audit-findings-duplicate-risk"
+    ],
+    "scoring": 40,
+    "selection_reason": "Large reward and likely SC scope, but deposit amount and detailed rules are not visible in extracted listing.",
+    "confidence": "low",
+    "verdict": "HOLD"
+  },
+  {
+    "program_name": "HackenProof listings unavailable (login-gated)",
+    "platform": "hackenproof",
+    "url": "https://dashboard.hackenproof.com/user/programs?tab=bounties",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "reputation_requirement": 91,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "login-gated-platform",
+      "listing-fetch-failed",
+      "reputation-requirement-may-exceed-user-profile"
+    ],
+    "scoring": 0,
+    "selection_reason": "Could not access program listings without authenticated session; treated as hard-filtered unavailable source for this run.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  },
+  {
+    "program_name": "HackerOne opportunities unavailable",
+    "platform": "hackerone",
+    "url": "https://hackerone.com/opportunities/all",
+    "new_or_updated": false,
+    "chains": [
+      "unknown"
+    ],
+    "stack": "Unknown",
+    "languages": [],
+    "reward_max": 0,
+    "reward_currency": "USD",
+    "deposit_required": false,
+    "smart_contract_in_scope": false,
+    "out_of_scope": [],
+    "known_issues": [],
+    "prohibited_actions": [],
+    "submission_rules": [],
+    "in_scope_contracts": [],
+    "risk_flags": [
+      "listing-content-blocked-or-empty",
+      "web2-mix-no-sc-program-confirmed"
+    ],
+    "scoring": 0,
+    "selection_reason": "Public opportunities page returned no extractable program detail in this runtime.",
+    "confidence": "low",
+    "verdict": "SKIP"
+  }
+]
